@@ -2277,9 +2277,16 @@
       };
     }
 
+    function getApiBaseUrl() {
+      if (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+        return 'http://127.0.0.1:8000';
+      }
+      return 'https://ipl-web-site-backend.up.railway.app';
+    }
+
     async function loadSeasonRuns(playerObj) {
       try {
-        const apiBase = "http://127.0.0.1:8000";
+        const apiBase = getApiBaseUrl();
         const res = await fetch(`${apiBase}/api/batting/?player=${encodeURIComponent(playerObj.name)}&page_size=100`);
         const data = await res.json();
         const results = data.results || [];
@@ -2324,7 +2331,7 @@
 
         inputEl.searchTimeout = setTimeout(async () => {
           try {
-            const apiBase = "http://127.0.0.1:8000";
+            const apiBase = getApiBaseUrl();
             const response = await fetch(`${apiBase}/api/players/?search=${encodeURIComponent(query)}`);
             const data = await response.json();
             const results = data.results || [];
