@@ -1,0 +1,54 @@
+match_id,season,date,team1,team2,venue,city,winner
+419111,2010,2010-03-15,Rajasthan Royals,Delhi Capitals,"Sardar Patel Stadium,Motera",Ahmedabad,Delhi Capitals
+419118,2010,2010-03-20,Rajasthan Royals,Kolkata Knight Riders,"Sardar Patel Stadium,Motera",Ahmedabad,Rajasthan Royals
+419126,2010,2010-03-26,Rajasthan Royals,Sunrisers Hyderabad,"Sardar Patel Stadium,Motera",Ahmedabad,Rajasthan Royals
+419129,2010,2010-03-28,Rajasthan Royals,Chennai Super Kings,"Sardar Patel Stadium,Motera",Ahmedabad,Rajasthan Royals
+733979,2014,2014-05-05,Rajasthan Royals,Kolkata Knight Riders,"Sardar Patel Stadium, Motera",Ahmedabad,Rajasthan Royals
+733989,2014,2014-05-08,Rajasthan Royals,Sunrisers Hyderabad,"Sardar Patel Stadium, Motera",Ahmedabad,Sunrisers Hyderabad
+734011,2014,2014-05-15,Rajasthan Royals,Delhi Daredevils,"Sardar Patel Stadium, Motera",Ahmedabad,Rajasthan Royals
+734017,2014,2014-05-19,Rajasthan Royals,Mumbai Indians,"Sardar Patel Stadium, Motera",Ahmedabad,Mumbai Indians
+829721,2015,2015-04-14,Rajasthan Royals,Mumbai Indians,"Sardar Patel Stadium, Motera",Ahmedabad,Rajasthan Royals
+829735,2015,2015-04-19,Rajasthan Royals,Chennai Super Kings,"Sardar Patel Stadium, Motera",Ahmedabad,Rajasthan Royals
+829741,2015,2015-04-21,Rajasthan Royals,Kings XI Punjab,"Sardar Patel Stadium, Motera",Ahmedabad,Kings XI Punjab
+829749,2015,2015-04-24,Rajasthan Royals,Royal Challengers Bangalore,"Sardar Patel Stadium, Motera",Ahmedabad,Royal Challengers Bangalore
+1254078,2021,2021-04-26,Punjab Kings,Kolkata Knight Riders,"Narendra Modi Stadium, Ahmedabad",Ahmedabad,Kolkata Knight Riders
+1254079,2021,2021-04-27,Royal Challengers Bangalore,Delhi Capitals,"Narendra Modi Stadium, Ahmedabad",Ahmedabad,Royal Challengers Bangalore
+1254082,2021,2021-04-29,Kolkata Knight Riders,Delhi Capitals,"Narendra Modi Stadium, Ahmedabad",Ahmedabad,Delhi Capitals
+1254083,2021,2021-04-30,Punjab Kings,Royal Challengers Bangalore,"Narendra Modi Stadium, Ahmedabad",Ahmedabad,Punjab Kings
+1254086,2021,2021-05-02,Punjab Kings,Delhi Capitals,"Narendra Modi Stadium, Ahmedabad",Ahmedabad,Delhi Capitals
+1312199,2022,2022-05-27,Royal Challengers Bangalore,Rajasthan Royals,"Narendra Modi Stadium, Ahmedabad",Ahmedabad,Rajasthan Royals
+1312200,2022,2022-05-29,Rajasthan Royals,Gujarat Titans,"Narendra Modi Stadium, Ahmedabad",Ahmedabad,Gujarat Titans
+1359475,2023,2023-03-31,Chennai Super Kings,Gujarat Titans,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Gujarat Titans
+1359487,2023,2023-04-09,Gujarat Titans,Kolkata Knight Riders,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Kolkata Knight Riders
+1359497,2023,2023-04-16,Gujarat Titans,Rajasthan Royals,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Rajasthan Royals
+1359509,2023,2023-04-25,Gujarat Titans,Mumbai Indians,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Gujarat Titans
+1359518,2023,2023-05-02,Delhi Capitals,Gujarat Titans,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Delhi Capitals
+1359525,2023,2023-05-07,Gujarat Titans,Lucknow Super Giants,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Gujarat Titans
+1359536,2023,2023-05-15,Gujarat Titans,Sunrisers Hyderabad,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Gujarat Titans
+1370352,2023,2023-05-26,Gujarat Titans,Mumbai Indians,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Gujarat Titans
+1370353,2023,2023-05-29,Gujarat Titans,Chennai Super Kings,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Chennai Super Kings
+1422123,2024,2024-03-24,Gujarat Titans,Mumbai Indians,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Gujarat Titans
+1422130,2024,2024-03-31,Sunrisers Hyderabad,Gujarat Titans,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Gujarat Titans
+1422135,2024,2024-04-04,Gujarat Titans,Punjab Kings,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Punjab Kings
+1426270,2024,2024-04-17,Gujarat Titans,Delhi Capitals,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Delhi Capitals
+1426283,2024,2024-04-28,Gujarat Titans,Royal Challengers Bengaluru,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Royal Challengers Bengaluru
+1426297,2024,2024-05-10,Gujarat Titans,Chennai Super Kings,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Gujarat Titans
+1426309,2024,2024-05-21,Sunrisers Hyderabad,Kolkata Knight Riders,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Kolkata Knight Riders
+1426310,2024,2024-05-22,Royal Challengers Bengaluru,Rajasthan Royals,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Rajasthan Royals
+1473442,2025,2025-03-25,Punjab Kings,Gujarat Titans,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Punjab Kings
+1473446,2025,2025-03-29,Gujarat Titans,Mumbai Indians,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Gujarat Titans
+1473460,2025,2025-04-09,Gujarat Titans,Rajasthan Royals,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Gujarat Titans
+1473472,2025,2025-04-19,Delhi Capitals,Gujarat Titans,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Gujarat Titans
+1473488,2025,2025-05-02,Gujarat Titans,Sunrisers Hyderabad,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Gujarat Titans
+1473502,2025,2025-05-22,Lucknow Super Giants,Gujarat Titans,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Lucknow Super Giants
+1473504,2025,2025-05-25,Chennai Super Kings,Gujarat Titans,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Chennai Super Kings
+1473510,2025,2025-06-01,Mumbai Indians,Punjab Kings,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Punjab Kings
+1473511,2025,2025-06-03,Royal Challengers Bengaluru,Punjab Kings,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Royal Challengers Bengaluru
+1527682,2026,2026-04-04,Rajasthan Royals,Gujarat Titans,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Rajasthan Royals
+1529268,2026,2026-04-17,Kolkata Knight Riders,Gujarat Titans,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Gujarat Titans
+1529273,2026,2026-04-20,Mumbai Indians,Gujarat Titans,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Mumbai Indians
+1529285,2026,2026-04-30,Royal Challengers Bengaluru,Gujarat Titans,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Gujarat Titans
+1529289,2026,2026-05-03,Punjab Kings,Gujarat Titans,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Gujarat Titans
+1529299,2026,2026-05-12,Gujarat Titans,Sunrisers Hyderabad,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Gujarat Titans
+1529309,2026,2026-05-21,Gujarat Titans,Chennai Super Kings,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Gujarat Titans
+1535465,2026,2026-05-31,Gujarat Titans,Royal Challengers Bengaluru,"Narendra Modi Stadium,Ahmedabad",Ahmedabad,Royal Challengers Bengaluru

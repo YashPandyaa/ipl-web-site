@@ -1,0 +1,65 @@
+{
+  "source": "ipl_comprehensive_dataset.csv (Cricsheet-derived, pending live Cricsheet zip download)",
+  "note": "Run scripts/import_squad_rosters_from_cricsheet.py after freeing disk space for authoritative ipl_json.zip parse",
+  "Mumbai Indians": {
+    "2008": [
+      "A Nehra", "A Nel", "AM Nayar", "AM Rahane", "CRD Fernando", "DJ Bravo", "DJ Thornely",
+      "DR Smith", "DS Kulkarni", "Harbhajan Singh", "L Ronchi", "MA Khote", "MK Pandey",
+      "PR Shah", "RR Raje", "RV Pawar", "RV Uthappa", "SD Chitnis", "SM Pollock",
+      "SR Tendulkar", "SS Tiwary", "ST Jayasuriya", "VS Yeligati", "YV Takawale"
+    ],
+    "2009": [
+      "AM Nayar", "AM Rahane", "C Nanda", "DJ Bravo", "DS Kulkarni", "GR Napier",
+      "Harbhajan Singh", "JP Duminy", "L Ronchi", "Mohammad Ashraful", "PR Shah",
+      "RA Shaikh", "RR Raje", "S Dhawan", "SL Malinga", "SR Tendulkar", "SS Tiwary",
+      "ST Jayasuriya", "YV Takawale", "Z Khan"
+    ],
+    "2010": [
+      "AG Murtaza", "AN Ahmed", "AP Tare", "AT Rayudu", "C Madan", "CRD Fernando",
+      "DJ Bravo", "DS Kulkarni", "Harbhajan Singh", "JP Duminy", "KA Pollard",
+      "R McLaren", "R Sathish", "S Dhawan", "SL Malinga", "SR Tendulkar", "SS Tiwary",
+      "ST Jayasuriya", "STR Binny", "Z Khan"
+    ],
+    "2011": [
+      "AC Blizzard", "AG Murtaza", "AM Nayar", "AN Ahmed", "AT Rayudu", "A Symonds",
+      "DJ Jacobs", "DS Kulkarni", "Harbhajan Singh", "JEC Franklin", "KA Pollard",
+      "MM Patel", "R Sathish", "RG Sharma", "RW Price", "SL Malinga", "SR Tendulkar",
+      "TL Suman"
+    ],
+    "2012": [
+      "AC Blizzard", "AN Ahmed", "AT Rayudu", "CJ McKay", "DR Smith", "DS Kulkarni",
+      "HH Gibbs", "Harbhajan Singh", "JEC Franklin", "KA Pollard", "KD Karthik",
+      "MM Patel", "NLTC Perera", "PP Ojha", "RE Levi", "RG Sharma", "RJ Peterson",
+      "RP Singh", "R Shukla", "SA Yadav", "SL Malinga", "SR Tendulkar", "TL Suman"
+    ]
+  },
+  "Chennai Super Kings": {
+    "2008": [
+      "A Mukund", "CK Kapugedera", "JA Morkel", "JDP Oram", "Joginder Sharma", "L Balaji",
+      "M Muralitharan", "M Ntini", "MEK Hussey", "ML Hayden", "MS Dhoni", "MS Gony",
+      "P Amarnath", "PA Patel", "S Anirudha", "S Badrinath", "S Vidyut", "SK Raina",
+      "SP Fleming"
+    ],
+    "2009": [
+      "A Flintoff", "GJ Bailey", "JA Morkel", "JDP Oram", "Joginder Sharma", "L Balaji",
+      "M Muralitharan", "M Vijay", "ML Hayden", "MS Dhoni", "MS Gony", "PA Patel",
+      "R Ashwin", "S Badrinath", "S Tyagi", "SB Jakati", "SK Raina", "T Thushara"
+    ],
+    "2010": [
+      "DE Bollinger", "GJ Bailey", "JA Morkel", "JM Kemp", "Joginder Sharma",
+      "KB Arun Karthik", "L Balaji", "M Muralitharan", "M Vijay", "MEK Hussey",
+      "ML Hayden", "MS Dhoni", "MS Gony", "NLTC Perera", "PA Patel", "R Ashwin",
+      "S Anirudha", "S Badrinath", "S Tyagi", "SB Jakati", "SK Raina", "T Thushara"
+    ],
+    "2011": [
+      "DE Bollinger", "DJ Bravo", "JA Morkel", "Joginder Sharma", "KMDN Kulasekara",
+      "MEK Hussey", "M Vijay", "MS Dhoni", "R Ashwin", "S Anirudha", "S Badrinath",
+      "S Randiv", "SB Jakati", "SB Styris", "SK Raina", "TG Southee", "WP Saha"
+    ],
+    "2012": [
+      "BW Hilfenhaus", "DE Bollinger", "DJ Bravo", "F du Plessis", "JA Morkel",
+      "KMDN Kulasekara", "MEK Hussey", "M Vijay", "MS Dhoni", "RA Jadeja", "R Ashwin",
+      "S Anirudha", "S Badrinath", "SB Jakati", "SK Raina", "VY Mahesh", "WP Saha"
+    ]
+  }
+}

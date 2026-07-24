@@ -1,0 +1,2895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IPL Universe - Superstar Player Comparator</title>
+  
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tabler Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+  
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    /* Styling & Theme Variables */
+    :root {
+      --bg-main: #0d0d0d;
+      --bg-surface: #141414;
+      --bg-surface-hover: #1c1c1c;
+      --border-color: #1f1f1f;
+      --border-glow: rgba(245, 166, 35, 0.15);
+      --text-primary: #ffffff;
+      --text-secondary: #a0a0a0;
+      --text-muted: #626262;
+      
+      --brand-color: #F5A623;
+      --p1-accent: #1D9E75;
+      --p1-accent-glow: rgba(29, 158, 117, 0.4);
+      --p1-accent-bg: rgba(29, 158, 117, 0.1);
+      --p2-accent: #378ADD;
+      --p2-accent-glow: rgba(55, 138, 221, 0.4);
+      --p2-accent-bg: rgba(55, 138, 221, 0.1);
+      
+      --grid-line-color: rgba(255, 255, 255, 0.08);
+      --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+    }
+
+    body.light-theme {
+      --bg-main: #f5f6f8;
+      --bg-surface: #ffffff;
+      --bg-surface-hover: #f0f2f5;
+      --border-color: #e2e8f0;
+      --border-glow: rgba(245, 166, 35, 0.1);
+      --text-primary: #1e293b;
+      --text-secondary: #64748b;
+      --text-muted: #94a3b8;
+      
+      --brand-color: #D97706;
+      --p1-accent: #0f766e;
+      --p1-accent-glow: rgba(15, 118, 110, 0.3);
+      --p1-accent-bg: rgba(15, 118, 110, 0.08);
+      --p2-accent: #1d4ed8;
+      --p2-accent-glow: rgba(29, 78, 216, 0.3);
+      --p2-accent-bg: rgba(29, 78, 216, 0.08);
+      
+      --grid-line-color: rgba(0, 0, 0, 0.08);
+      --card-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.08);
+    }
+
+    .filter-select option {
+      background-color: var(--bg-surface);
+      color: var(--text-primary);
+    }
+
+    body.light-theme .progress-track {
+      background-color: #e2e8f0;
+      border: 1px solid #cbd5e1;
+    }
+
+    body.light-theme .vs-placeholder-card {
+      background-color: #f8fafc;
+      border-color: #cbd5e1;
+      color: #64748b;
+    }
+
+    body.light-theme .autocomplete-dropdown {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      border-color: #cbd5e1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      font-family: 'Inter', system-sans-serif, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background-color 0.3s, color 0.3s;
+      overflow-x: hidden;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-main);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--text-muted);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* 1. TOP NAV BAR */
+    .navbar {
+      height: 70px;
+      background-color: var(--bg-surface);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+
+    .nav-logo-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-logo {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--brand-color);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-badge {
+      font-size: 10px;
+      background: rgba(245, 166, 35, 0.1);
+      border: 1px solid rgba(245, 166, 35, 0.25);
+      color: var(--brand-color);
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-link {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+
+    .nav-link:hover {
+      color: var(--text-primary);
+      background-color: var(--bg-surface-hover);
+    }
+
+    .nav-link.active {
+      color: #ffffff;
+      background-color: var(--brand-color);
+      font-weight: 600;
+    }
+    
+    body.light-theme .nav-link.active {
+      color: #ffffff;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .theme-toggle:hover {
+      background-color: var(--bg-surface-hover);
+      border-color: var(--brand-color);
+    }
+
+    /* 2. PAGE LAYOUT */
+    .app-container {
+      max-width: 1400px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      flex-grow: 1;
+    }
+
+    .page-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .page-title {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, var(--text-primary) 30%, var(--brand-color) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .page-subtitle {
+      font-size: 15px;
+      color: var(--text-secondary);
+    }
+
+    /* 10. FILTERS ROW */
+    .filters-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      background-color: var(--bg-surface);
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      align-items: center;
+      transition: all 0.3s;
+    }
+
+    .filters-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--brand-color);
+      margin-right: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .filter-select {
+      background-color: var(--bg-main);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-family: inherit;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .filter-select:hover {
+      border-color: var(--brand-color);
+      background-color: var(--bg-surface-hover);
+    }
+
+    .filter-select:focus {
+      border-color: var(--brand-color);
+      box-shadow: 0 0 0 3px var(--border-glow);
+    }
+
+    /* 3. PLAYER SEARCH INPUTS */
+    .search-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .search-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .search-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+      transition: all 0.3s;
+      box-shadow: var(--card-shadow);
+    }
+
+    .search-card-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .search-card-label.p1 {
+      color: var(--p1-accent);
+    }
+
+    .search-card-label.p2 {
+      color: var(--p2-accent);
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-input {
+      width: 100%;
+      background-color: var(--bg-main);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 12px 16px 12px 42px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.3s;
+    }
+
+    .search-icon-inside {
+      position: absolute;
+      left: 14px;
+      color: var(--text-muted);
+      font-size: 18px;
+      pointer-events: none;
+      transition: color 0.3s;
+    }
+
+    .clear-btn {
+      position: absolute;
+      right: 14px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 18px;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      transition: all 0.2s;
+    }
+
+    .clear-btn:hover {
+      background-color: var(--bg-surface-hover);
+      color: var(--text-primary);
+    }
+
+    /* Focus States */
+    .p1-focus-ring:focus-within {
+      border-color: var(--p1-accent) !important;
+      box-shadow: 0 0 0 3px var(--p1-accent-glow);
+    }
+
+    .p2-focus-ring:focus-within {
+      border-color: var(--p2-accent) !important;
+      box-shadow: 0 0 0 3px var(--p2-accent-glow);
+    }
+
+    .p1-focus-ring:focus-within .search-icon-inside {
+      color: var(--p1-accent);
+    }
+
+    .p2-focus-ring:focus-within .search-icon-inside {
+      color: var(--p2-accent);
+    }
+
+    /* Autocomplete Dropdown */
+    .autocomplete-dropdown {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      width: 100%;
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      max-height: 260px;
+      overflow-y: auto;
+      z-index: 99;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      display: none;
+    }
+
+    .autocomplete-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      cursor: pointer;
+      border-bottom: 1px solid var(--border-color);
+      transition: background-color 0.2s;
+    }
+
+    .autocomplete-item:last-child {
+      border-bottom: none;
+    }
+
+    .autocomplete-item:hover, .autocomplete-item.active {
+      background-color: var(--bg-surface-hover);
+    }
+
+    .autocomplete-details {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .player-avatar-small {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 12px;
+      color: #ffffff;
+    }
+
+    .player-name-small {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .player-team-small {
+      font-size: 11px;
+      color: var(--text-secondary);
+      margin-top: 1px;
+    }
+
+    .player-role-badge {
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 12px;
+      background-color: var(--bg-main);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-color);
+    }
+
+    /* EMPTY STATE */
+    .empty-state {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 5rem 2rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      box-shadow: var(--card-shadow);
+    }
+
+    .empty-state-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(245, 166, 35, 0.08);
+      border: 1px solid rgba(245, 166, 35, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand-color);
+      font-size: 32px;
+      margin-bottom: 0.5rem;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 166, 35, 0.4); }
+      70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(245, 166, 35, 0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 166, 35, 0); }
+    }
+
+    .empty-state-title {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .empty-state-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      max-width: 480px;
+      line-height: 1.5;
+    }
+
+    /* MAIN COMPARATOR SECTION */
+    .comparator-dashboard {
+      display: none;
+      flex-direction: column;
+      gap: 2rem;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .comparator-dashboard.active {
+      display: flex;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* PROFILE OVERVIEW HEADERS */
+    .profile-headers {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .comparator-dashboard.vs-mode .profile-headers {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .profile-header-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      position: relative;
+      box-shadow: var(--card-shadow);
+      transition: all 0.3s;
+    }
+
+    .profile-header-card.p1 {
+      border-left: 4px solid var(--p1-accent);
+    }
+
+    .profile-header-card.p2 {
+      border-left: 4px solid var(--p2-accent);
+    }
+
+    .player-avatar-large {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 22px;
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .profile-details {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .profile-name {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    .profile-sub {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .vs-placeholder-card {
+      background-color: var(--bg-surface);
+      border: 1px dashed var(--border-color);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    /* GRID LAYOUTS FOR CHARTS & DATA */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 1024px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .dashboard-col {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* CARDS */
+    .surface-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      transition: all 0.3s;
+    }
+
+    .card-title-group {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-title-main {
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-title-main i {
+      color: var(--brand-color);
+      font-size: 18px;
+    }
+
+    /* 4. RADAR CHART CONTAINER */
+    .chart-container-radar {
+      height: 340px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chart-legend {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .legend-dot.p1 { background-color: var(--p1-accent); }
+    .legend-dot.p2 { background-color: var(--p2-accent); }
+
+    /* 5. HEAD-TO-HEAD STAT BARS */
+    .h2h-metric-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .h2h-metric-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .h2h-metric-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .h2h-metric-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .h2h-bars-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .h2h-player-bar-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .h2h-player-label {
+      width: 110px;
+      font-size: 11.5px;
+      color: var(--text-secondary);
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .progress-track {
+      flex-grow: 1;
+      height: 8px;
+      background-color: var(--bg-main);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 4px;
+      width: 0;
+      transition: width 1s cubic-bezier(0.1, 0.8, 0.2, 1);
+    }
+
+    .progress-fill.p1 { background-color: var(--p1-accent); }
+    .progress-fill.p2 { background-color: var(--p2-accent); }
+
+    .h2h-player-val {
+      width: 45px;
+      text-align: right;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    /* 6. MILESTONE CARDS ROW */
+    .milestones-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 580px) {
+      .milestones-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .milestone-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: var(--card-shadow);
+      transition: all 0.3s;
+    }
+
+    .milestone-header-icon {
+      font-size: 20px;
+      color: var(--brand-color);
+      background: rgba(245, 166, 35, 0.08);
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(245, 166, 35, 0.15);
+    }
+
+    .milestone-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .milestone-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .milestone-compare-values {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .milestone-val-p1 { color: var(--p1-accent); }
+    .milestone-val-p2 { color: var(--p2-accent); }
+
+    .milestone-divider {
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    /* 7. SEASON-BY-SEASON LINE CHART */
+    .chart-container-line {
+      height: 280px;
+      position: relative;
+    }
+
+    /* 8. SITUATIONAL STATS PANEL */
+    .situational-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 640px) {
+      .situational-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .styles-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .player-styles-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .styles-player-name {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .styles-player-name.p1 { color: var(--p1-accent); }
+    .styles-player-name.p2 { color: var(--p2-accent); }
+
+    .chips-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .style-chip {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1px solid transparent;
+    }
+
+    .style-chip.p1 {
+      background-color: var(--p1-accent-bg);
+      color: var(--p1-accent);
+      border-color: rgba(29, 158, 117, 0.2);
+    }
+
+    .style-chip.p2 {
+      background-color: var(--p2-accent-bg);
+      color: var(--p2-accent);
+      border-color: rgba(55, 138, 221, 0.2);
+    }
+
+    .situational-table {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .sit-table-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .sit-table-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .sit-table-row.header {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .sit-metric-col {
+      flex: 1.5;
+      font-size: 12.5px;
+      font-weight: 500;
+    }
+
+    .sit-val-col {
+      flex: 1;
+      text-align: right;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .sit-val-col.p1 { color: var(--p1-accent); }
+    .sit-val-col.p2 { color: var(--p2-accent); }
+
+    /* 9. AI TACTICAL VERDICT BOX */
+    .verdict-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: var(--card-shadow);
+      display: none;
+      flex-direction: column;
+      gap: 0.75rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .comparator-dashboard.vs-mode .verdict-card {
+      display: flex;
+    }
+
+    .verdict-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--brand-color), var(--p2-accent));
+    }
+
+    .verdict-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--brand-color);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .verdict-header i {
+      font-size: 16px;
+    }
+
+    .verdict-text {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-primary);
+      font-style: italic;
+    }
+
+    /* UTILITIES */
+    .vs-element {
+      display: none;
+    }
+
+    .comparator-dashboard.vs-mode .vs-element {
+      display: inherit;
+    }
+
+    .comparator-dashboard.vs-mode .vs-element-flex {
+      display: flex;
+    }
+
+    .comparator-dashboard.vs-mode .vs-element-grid {
+      display: grid;
+    }
+
+    .p1-text { color: var(--p1-accent) !important; }
+    .p2-text { color: var(--p2-accent) !important; }
+
+    /* Hiding classes for JS toggles */
+    .hidden {
+      display: none !important;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: var(--bg-surface);
+      border-top: 1px solid var(--border-color);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: auto;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+
+    /* IFRAME INTEGRATION RULES */
+    body.in-iframe .navbar {
+      display: none !important;
+    }
+    body.in-iframe footer {
+      display: none !important;
+    }
+    body.in-iframe .app-container {
+      padding: 1rem 0 !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. TOP NAV BAR -->
+  <nav class="navbar">
+    <div class="nav-logo-group">
+      <a href="#" class="nav-logo">
+        <i class="ti ti-crown"></i> IPL UNIVERSE
+      </a>
+      <span class="nav-badge">2008–2026</span>
+    </div>
+    
+    <div class="nav-links">
+      <a href="#" class="nav-link">Home</a>
+      <a href="#" class="nav-link">Stats</a>
+      <a href="#" class="nav-link">Players</a>
+      <a href="#" class="nav-link">Teams</a>
+      <a href="#" class="nav-link">Squads</a>
+      <a href="#" class="nav-link">Seasons</a>
+      <a href="#" class="nav-link">Records</a>
+      <a href="player_comparator.html" class="nav-link active">Compare</a>
+      <a href="trending_venues_map.html" class="nav-link">Trending Map</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="theme-toggle" id="theme-toggle" title="Toggle Light/Dark Mode" aria-label="Toggle Light/Dark Mode">
+        <i class="ti ti-moon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <div class="app-container">
+    
+    <!-- 2. PAGE HEADER -->
+    <div class="page-header">
+      <h1 class="page-title">Superstar Player Comparator</h1>
+      <p class="page-subtitle">Plot contrasting radar overlays and generate tactical comparison reports.</p>
+    </div>
+
+    <!-- 10. FILTERS ROW -->
+    <div class="filters-row">
+      <span class="filters-label">
+        <i class="ti ti-adjustments-horizontal"></i> Filters
+      </span>
+      <select class="filter-select" id="filter-season">
+        <option value="all">Season Range: All</option>
+        <option value="1820">Season Range: 2018–2020</option>
+        <option value="2123">Season Range: 2021–2023</option>
+        <option value="2426">Season Range: 2024–2026</option>
+      </select>
+      <select class="filter-select" id="filter-venue">
+        <option value="all">Venue: All Venues</option>
+        <option value="wankhede">Venue: Wankhede</option>
+        <option value="eden">Venue: Eden Gardens</option>
+        <option value="chepauk">Venue: Chepauk</option>
+        <option value="chinnaswamy">Venue: Chinnaswamy</option>
+        <option value="modi">Venue: Narendra Modi</option>
+      </select>
+      <select class="filter-select" id="filter-matchtype">
+        <option value="all">Match Type: All</option>
+        <option value="powerplay">Match Type: Powerplay</option>
+        <option value="death">Match Type: Death Overs</option>
+        <option value="chase">Match Type: Chases</option>
+        <option value="defense">Match Type: Defenses</option>
+      </select>
+    </div>
+
+    <!-- 3. PLAYER SEARCH INPUTS -->
+    <div class="search-row">
+      <!-- Player 1 Search -->
+      <div class="search-card p1-focus-ring">
+        <span class="search-card-label p1">
+          <i class="ti ti-circle-filled"></i> Player 1 (Teal)
+        </span>
+        <div class="input-wrapper">
+          <i class="ti ti-search search-icon-inside"></i>
+          <input type="text" id="p1-search" class="search-input" placeholder="Search Player 1 (e.g. Virat Kohli)..." autocomplete="off">
+          <button id="p1-clear" class="clear-btn"><i class="ti ti-x"></i></button>
+        </div>
+        <div id="p1-dropdown" class="autocomplete-dropdown"></div>
+      </div>
+
+      <!-- Player 2 Search -->
+      <div class="search-card p2-focus-ring">
+        <span class="search-card-label p2">
+          <i class="ti ti-circle-filled"></i> Player 2 (Blue)
+        </span>
+        <div class="input-wrapper">
+          <i class="ti ti-search search-icon-inside"></i>
+          <input type="text" id="p2-search" class="search-input" placeholder="Search Player 2 (e.g. Rohit Sharma)..." autocomplete="off" disabled>
+          <button id="p2-clear" class="clear-btn"><i class="ti ti-x"></i></button>
+        </div>
+        <div id="p2-dropdown" class="autocomplete-dropdown"></div>
+      </div>
+    </div>
+
+    <!-- EMPTY STATE VIEW -->
+    <div class="empty-state" id="empty-state">
+      <div class="empty-state-icon">
+        <i class="ti ti-git-compare"></i>
+      </div>
+      <h2 class="empty-state-title">Select a Superstar Player</h2>
+      <p class="empty-state-desc">Select Player 1 in the search bar above to begin. Once selected, you can add Player 2 to overlay metrics and evaluate stats head-to-head.</p>
+    </div>
+
+    <!-- COMPARATOR DASHBOARD VIEW -->
+    <div class="comparator-dashboard" id="comparator-dashboard">
+      
+      <!-- PROFILE HEADERS -->
+      <div class="profile-headers" id="profile-headers">
+        <!-- Player 1 Profile Card -->
+        <div class="profile-header-card p1" id="p1-profile-card">
+          <div class="player-avatar-large" id="p1-avatar">VK</div>
+          <div class="profile-details">
+            <h2 class="profile-name" id="p1-name">Virat Kohli</h2>
+            <div class="profile-sub">
+              <span id="p1-team">Royal Challengers Bengaluru</span>
+              <span class="player-role-badge" id="p1-role">Batsman</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Player 2 Profile Card / Placeholder -->
+        <div id="p2-profile-placeholder" class="vs-placeholder-card">
+          <i class="ti ti-plus"></i> Select Player 2 from search above to begin comparison
+        </div>
+        <div class="profile-header-card p2 hidden" id="p2-profile-card">
+          <div class="player-avatar-large" id="p2-avatar">RS</div>
+          <div class="profile-details">
+            <h2 class="profile-name" id="p2-name">Rohit Sharma</h2>
+            <div class="profile-sub">
+              <span id="p2-team">Mumbai Indians</span>
+              <span class="player-role-badge" id="p2-role">Batsman</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAIN CHARTS AND DATA GRID -->
+      <div class="dashboard-grid">
+        
+        <!-- Left Dashboard Column -->
+        <div class="dashboard-col">
+          
+          <!-- Radar Chart Card -->
+          <div class="surface-card">
+            <div class="card-title-group">
+              <span class="card-title-main"><i class="ti ti-radar"></i> Skill Index Overlays</span>
+              <div class="chart-legend">
+                <div class="legend-item">
+                  <span class="legend-dot p1"></span>
+                  <span id="legend-p1-name">Player 1</span>
+                </div>
+                <div class="legend-item vs-element-flex">
+                  <span class="legend-dot p2"></span>
+                  <span id="legend-p2-name">Player 2</span>
+                </div>
+              </div>
+            </div>
+            <div class="chart-container-radar">
+              <canvas id="radarChartCanvas"></canvas>
+            </div>
+          </div>
+
+          <!-- Head-to-Head Stats Bars Card -->
+          <div class="surface-card">
+            <span class="card-title-main"><i class="ti ti-align-left"></i> Head-to-Head Metrics</span>
+            <div class="h2h-metric-list">
+              
+              <!-- Metric: Batting Average -->
+              <div class="h2h-metric-row">
+                <div class="h2h-metric-header">
+                  <span class="h2h-metric-name">Batting Average</span>
+                </div>
+                <div class="h2h-bars-container">
+                  <div class="h2h-player-bar-wrapper">
+                    <span class="h2h-player-label" id="bar-p1-name-avg">P1</span>
+                    <div class="progress-track">
+                      <div class="progress-fill p1" id="bar-p1-fill-avg"></div>
+                    </div>
+                    <span class="h2h-player-val" id="bar-p1-val-avg">0.0</span>
+                  </div>
+                  <div class="h2h-player-bar-wrapper vs-element-flex">
+                    <span class="h2h-player-label" id="bar-p2-name-avg">P2</span>
+                    <div class="progress-track">
+                      <div class="progress-fill p2" id="bar-p2-fill-avg"></div>
+                    </div>
+                    <span class="h2h-player-val" id="bar-p2-val-avg">0.0</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Metric: Strike Rate -->
+              <div class="h2h-metric-row">
+                <div class="h2h-metric-header">
+                  <span class="h2h-metric-name">Strike Rate</span>
+                </div>
+                <div class="h2h-bars-container">
+                  <div class="h2h-player-bar-wrapper">
+                    <span class="h2h-player-label" id="bar-p1-name-sr">P1</span>
+                    <div class="progress-track">
+                      <div class="progress-fill p1" id="bar-p1-fill-sr"></div>
+                    </div>
+                    <span class="h2h-player-val" id="bar-p1-val-sr">0.0</span>
+                  </div>
+                  <div class="h2h-player-bar-wrapper vs-element-flex">
+                    <span class="h2h-player-label" id="bar-p2-name-sr">P2</span>
+                    <div class="progress-track">
+                      <div class="progress-fill p2" id="bar-p2-fill-sr"></div>
+                    </div>
+                    <span class="h2h-player-val" id="bar-p2-val-sr">0.0</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Metric: Total Runs -->
+              <div class="h2h-metric-row">
+                <div class="h2h-metric-header">
+                  <span class="h2h-metric-name">Total Runs</span>
+                </div>
+                <div class="h2h-bars-container">
+                  <div class="h2h-player-bar-wrapper">
+                    <span class="h2h-player-label" id="bar-p1-name-runs">P1</span>
+                    <div class="progress-track">
+                      <div class="progress-fill p1" id="bar-p1-fill-runs"></div>
+                    </div>
+                    <span class="h2h-player-val" id="bar-p1-val-runs">0</span>
+                  </div>
+                  <div class="h2h-player-bar-wrapper vs-element-flex">
+                    <span class="h2h-player-label" id="bar-p2-name-runs">P2</span>
+                    <div class="progress-track">
+                      <div class="progress-fill p2" id="bar-p2-fill-runs"></div>
+                    </div>
+                    <span class="h2h-player-val" id="bar-p2-val-runs">0</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Metric: Sixes Hit -->
+              <div class="h2h-metric-row">
+                <div class="h2h-metric-header">
+                  <span class="h2h-metric-name">Sixes Hit</span>
+                </div>
+                <div class="h2h-bars-container">
+                  <div class="h2h-player-bar-wrapper">
+                    <span class="h2h-player-label" id="bar-p1-name-sixes">P1</span>
+                    <div class="progress-track">
+                      <div class="progress-fill p1" id="bar-p1-fill-sixes"></div>
+                    </div>
+                    <span class="h2h-player-val" id="bar-p1-val-sixes">0</span>
+                  </div>
+                  <div class="h2h-player-bar-wrapper vs-element-flex">
+                    <span class="h2h-player-label" id="bar-p2-name-sixes">P2</span>
+                    <div class="progress-track">
+                      <div class="progress-fill p2" id="bar-p2-fill-sixes"></div>
+                    </div>
+                    <span class="h2h-player-val" id="bar-p2-val-sixes">0</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Dashboard Column -->
+        <div class="dashboard-col">
+          
+          <!-- Milestone Cards Row (3 Cards) -->
+          <div class="milestones-row">
+            <!-- Centuries Card -->
+            <div class="milestone-card">
+              <span class="milestone-header-icon"><i class="ti ti-trophy"></i></span>
+              <div class="milestone-info">
+                <span class="milestone-title">Centuries (100s)</span>
+                <div class="milestone-compare-values">
+                  <span class="milestone-val-p1" id="milestone-p1-100s">0</span>
+                  <span class="milestone-divider vs-element">vs</span>
+                  <span class="milestone-val-p2 vs-element" id="milestone-p2-100s">0</span>
+                </div>
+              </div>
+            </div>
+            <!-- Half Centuries Card -->
+            <div class="milestone-card">
+              <span class="milestone-header-icon"><i class="ti ti-medal"></i></span>
+              <div class="milestone-info">
+                <span class="milestone-title">Half-Centuries (50s)</span>
+                <div class="milestone-compare-values">
+                  <span class="milestone-val-p1" id="milestone-p1-50s">0</span>
+                  <span class="milestone-divider vs-element">vs</span>
+                  <span class="milestone-val-p2 vs-element" id="milestone-p2-50s">0</span>
+                </div>
+              </div>
+            </div>
+            <!-- Sixes Card -->
+            <div class="milestone-card">
+              <span class="milestone-header-icon"><i class="ti ti-flame"></i></span>
+              <div class="milestone-info">
+                <span class="milestone-title">Total Sixes</span>
+                <div class="milestone-compare-values">
+                  <span class="milestone-val-p1" id="milestone-p1-sixes">0</span>
+                  <span class="milestone-divider vs-element">vs</span>
+                  <span class="milestone-val-p2 vs-element" id="milestone-p2-sixes">0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Season-by-Season Line Chart -->
+          <div class="surface-card">
+            <span class="card-title-main"><i class="ti ti-trending-up"></i> Season Runs Trend (2018–2025)</span>
+            <div class="chart-container-line">
+              <canvas id="lineChartCanvas"></canvas>
+            </div>
+          </div>
+
+          <!-- Situational Stats Panel (2-column Grid) -->
+          <div class="situational-grid">
+            <!-- Left Card: Style Tags -->
+            <div class="surface-card">
+              <span class="card-title-main"><i class="ti ti-tags"></i> Playing Styles</span>
+              <div class="styles-container">
+                <div class="player-styles-group">
+                  <span class="styles-player-name p1" id="style-p1-name">Player 1</span>
+                  <div class="chips-list" id="style-p1-chips"></div>
+                </div>
+                <div class="player-styles-group vs-element-flex">
+                  <span class="styles-player-name p2" id="style-p2-name">Player 2</span>
+                  <div class="chips-list" id="style-p2-chips"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Card: Situational Averages -->
+            <div class="surface-card">
+              <span class="card-title-main"><i class="ti ti-chart-dots"></i> Situational Stats</span>
+              <div class="situational-table">
+                <div class="sit-table-row header">
+                  <span class="sit-metric-col">Situation</span>
+                  <span class="sit-val-col p1" id="sit-header-p1">P1</span>
+                  <span class="sit-val-col p2 vs-element" id="sit-header-p2">P2</span>
+                </div>
+                <div class="sit-table-row">
+                  <span class="sit-metric-col">Powerplay Avg</span>
+                  <span class="sit-val-col" id="sit-p1-pp">0.0</span>
+                  <span class="sit-val-col p2 vs-element" id="sit-p2-pp">0.0</span>
+                </div>
+                <div class="sit-table-row">
+                  <span class="sit-metric-col">Death Overs SR</span>
+                  <span class="sit-val-col" id="sit-p1-death">0.0</span>
+                  <span class="sit-val-col p2 vs-element" id="sit-p2-death">0.0</span>
+                </div>
+                <div class="sit-table-row">
+                  <span class="sit-metric-col">vs Spin Avg</span>
+                  <span class="sit-val-col" id="sit-p1-spin">0.0</span>
+                  <span class="sit-val-col p2 vs-element" id="sit-p2-spin">0.0</span>
+                </div>
+                <div class="sit-table-row">
+                  <span class="sit-metric-col">Chase Avg</span>
+                  <span class="sit-val-col" id="sit-p1-chase">0.0</span>
+                  <span class="sit-val-col p2 vs-element" id="sit-p2-chase">0.0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- 9. AI TACTICAL VERDICT BOX -->
+      <div class="verdict-card">
+        <div class="verdict-header">
+          <i class="ti ti-sparkles"></i> AI Tactical Verdict
+        </div>
+        <p class="verdict-text" id="verdict-text">Select both players to run predictive overlays and compare matchups.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    IPL UNIVERSE &copy; 2026. Made with premium aesthetics. View the <a href="trending_venues_map.html" style="color: var(--brand-color); font-weight: 500;">Venues Map</a>.
+  </footer>
+
+  <script>
+    // Check if running inside an iframe
+    if (window.self !== window.top) {
+      document.body.classList.add("in-iframe");
+    }
+
+    // ----------------------------------------------------
+    // HARDCODED PLAYER DATABASE (20 Superstar Players)
+    // ----------------------------------------------------
+    const playerDb = [
+      {
+        id: "kohli",
+        name: "Virat Kohli",
+        team: "Royal Challengers Bengaluru",
+        role: "Batsman",
+        avatar: "VK",
+        bg_gradient: "linear-gradient(135deg, #EC1C24 0%, #1c1c1c 100%)",
+        batting_avg: 38.7,
+        strike_rate: 130.4,
+        total_runs: 7263,
+        centuries: 7,
+        half_centuries: 50,
+        sixes: 234,
+        season_runs: [530, 464, 466, 405, 341, 639, 741, 580], // 2018-2025
+        powerplay_avg: 42.5,
+        death_sr: 182.4,
+        vs_spin_avg: 48.1,
+        chase_avg: 44.3,
+        style_tags: ["Chase Specialist", "Anchor", "Spin Master"],
+        radar_stats: {
+          strike_rate: 72,
+          batting_avg: 88,
+          boundaries: 85,
+          consistency: 96,
+          centuries: 98,
+          half_centuries: 92
+        }
+      },
+      {
+        id: "rohit",
+        name: "Rohit Sharma",
+        team: "Mumbai Indians",
+        role: "Batsman",
+        avatar: "RS",
+        bg_gradient: "linear-gradient(135deg, #004BA0 0%, #002B5C 100%)",
+        batting_avg: 29.6,
+        strike_rate: 131.2,
+        total_runs: 6211,
+        centuries: 2,
+        half_centuries: 42,
+        sixes: 257,
+        season_runs: [286, 405, 332, 381, 268, 332, 417, 370],
+        powerplay_avg: 35.8,
+        death_sr: 191.2,
+        vs_spin_avg: 28.5,
+        chase_avg: 31.2,
+        style_tags: ["Power Hitter", "Pull Specialist", "Leader"],
+        radar_stats: {
+          strike_rate: 73,
+          batting_avg: 70,
+          boundaries: 94,
+          consistency: 82,
+          centuries: 72,
+          half_centuries: 85
+        }
+      },
+      {
+        id: "dhoni",
+        name: "MS Dhoni",
+        team: "Chennai Super Kings",
+        role: "Wicketkeeper-Batsman",
+        avatar: "MSD",
+        bg_gradient: "linear-gradient(135deg, #D97706 0%, #92400E 100%)",
+        batting_avg: 38.8,
+        strike_rate: 135.9,
+        total_runs: 5082,
+        centuries: 0,
+        half_centuries: 24,
+        sixes: 239,
+        season_runs: [455, 414, 200, 114, 232, 104, 161, 120],
+        powerplay_avg: 18.2,
+        death_sr: 206.5,
+        vs_spin_avg: 34.8,
+        chase_avg: 47.9,
+        style_tags: ["Finisher", "Death Specialist", "Tactician"],
+        radar_stats: {
+          strike_rate: 76,
+          batting_avg: 88,
+          boundaries: 88,
+          consistency: 85,
+          centuries: 20,
+          half_centuries: 68
+        }
+      },
+      {
+        id: "hardik",
+        name: "Hardik Pandya",
+        team: "Mumbai Indians",
+        role: "All-rounder",
+        avatar: "HP",
+        bg_gradient: "linear-gradient(135deg, #004BA0 0%, #E2A000 100%)",
+        batting_avg: 30.3,
+        strike_rate: 145.8,
+        total_runs: 2309,
+        centuries: 0,
+        half_centuries: 10,
+        sixes: 125,
+        season_runs: [260, 402, 281, 127, 487, 346, 216, 280],
+        powerplay_avg: 24.5,
+        death_sr: 198.2,
+        vs_spin_avg: 38.4,
+        chase_avg: 35.1,
+        style_tags: ["Power Hitter", "Clutch Player", "All-rounder"],
+        radar_stats: {
+          strike_rate: 85,
+          batting_avg: 71,
+          boundaries: 75,
+          consistency: 78,
+          centuries: 20,
+          half_centuries: 50
+        }
+      },
+      {
+        id: "bumrah",
+        name: "Jasprit Bumrah",
+        team: "Mumbai Indians",
+        role: "Bowler",
+        avatar: "JB",
+        bg_gradient: "linear-gradient(135deg, #004BA0 0%, #1f1f1f 100%)",
+        batting_avg: 12.4,
+        strike_rate: 98.5,
+        total_runs: 72,
+        centuries: 0,
+        half_centuries: 0,
+        sixes: 2,
+        season_runs: [5, 12, 8, 16, 10, 4, 12, 5],
+        powerplay_avg: 15.0,
+        death_sr: 110.0,
+        vs_spin_avg: 12.0,
+        chase_avg: 10.0,
+        style_tags: ["Death Specialist", "Yor-King", "Slick Economy"],
+        radar_stats: {
+          strike_rate: 35,
+          batting_avg: 25,
+          boundaries: 15,
+          consistency: 30,
+          centuries: 10,
+          half_centuries: 10
+        }
+      },
+      {
+        id: "rahul",
+        name: "KL Rahul",
+        team: "Lucknow Super Giants",
+        role: "Batsman",
+        avatar: "KLR",
+        bg_gradient: "linear-gradient(135deg, #0C2340 0%, #0077b6 100%)",
+        batting_avg: 45.4,
+        strike_rate: 134.6,
+        total_runs: 4163,
+        centuries: 4,
+        half_centuries: 33,
+        sixes: 168,
+        season_runs: [659, 593, 670, 626, 616, 273, 520, 460],
+        powerplay_avg: 50.2,
+        death_sr: 172.5,
+        vs_spin_avg: 41.3,
+        chase_avg: 46.8,
+        style_tags: ["Anchor", "Technician", "Opening Specialist"],
+        radar_stats: {
+          strike_rate: 75,
+          batting_avg: 96,
+          boundaries: 79,
+          consistency: 94,
+          centuries: 88,
+          half_centuries: 85
+        }
+      },
+      {
+        id: "sky",
+        name: "Suryakumar Yadav",
+        team: "Mumbai Indians",
+        role: "Batsman",
+        avatar: "SKY",
+        bg_gradient: "linear-gradient(135deg, #004BA0 0%, #0096C7 100%)",
+        batting_avg: 32.2,
+        strike_rate: 143.3,
+        total_runs: 3249,
+        centuries: 2,
+        half_centuries: 21,
+        sixes: 112,
+        season_runs: [512, 424, 480, 317, 303, 605, 345, 410],
+        powerplay_avg: 36.4,
+        death_sr: 212.8,
+        vs_spin_avg: 46.2,
+        chase_avg: 34.5,
+        style_tags: ["360 Degree", "Spin Destroyer", "Aggressor"],
+        radar_stats: {
+          strike_rate: 83,
+          batting_avg: 74,
+          boundaries: 72,
+          consistency: 84,
+          centuries: 72,
+          half_centuries: 65
+        }
+      },
+      {
+        id: "gill",
+        name: "Shubman Gill",
+        team: "Gujarat Titans",
+        role: "Batsman",
+        avatar: "SG",
+        bg_gradient: "linear-gradient(135deg, #1B2B3A 0%, #12222E 100%)",
+        batting_avg: 38.1,
+        strike_rate: 135.3,
+        total_runs: 3080,
+        centuries: 3,
+        half_centuries: 18,
+        sixes: 88,
+        season_runs: [203, 296, 440, 478, 483, 890, 426, 490],
+        powerplay_avg: 44.1,
+        death_sr: 165.4,
+        vs_spin_avg: 42.8,
+        chase_avg: 39.2,
+        style_tags: ["Elegant Anchor", "Opening Master", "Drive Specialist"],
+        radar_stats: {
+          strike_rate: 76,
+          batting_avg: 87,
+          boundaries: 64,
+          consistency: 90,
+          centuries: 80,
+          half_centuries: 62
+        }
+      },
+      {
+        id: "jadeja",
+        name: "Ravindra Jadeja",
+        team: "Chennai Super Kings",
+        role: "All-rounder",
+        avatar: "RJ",
+        bg_gradient: "linear-gradient(135deg, #F9CD05 0%, #006400 100%)",
+        batting_avg: 26.6,
+        strike_rate: 128.6,
+        total_runs: 2692,
+        centuries: 0,
+        half_centuries: 2,
+        sixes: 98,
+        season_runs: [89, 249, 232, 227, 116, 190, 267, 240],
+        powerplay_avg: 22.4,
+        death_sr: 186.2,
+        vs_spin_avg: 32.5,
+        chase_avg: 36.4,
+        style_tags: ["Finisher", "Clutch Batter", "All-rounder"],
+        radar_stats: {
+          strike_rate: 70,
+          batting_avg: 64,
+          boundaries: 66,
+          consistency: 80,
+          centuries: 20,
+          half_centuries: 30
+        }
+      },
+      {
+        id: "russell",
+        name: "Andre Russell",
+        team: "Kolkata Knight Riders",
+        role: "All-rounder",
+        avatar: "AR",
+        bg_gradient: "linear-gradient(135deg, #2E0854 0%, #D4AF37 100%)",
+        batting_avg: 29.4,
+        strike_rate: 174.0,
+        total_runs: 2262,
+        centuries: 0,
+        half_centuries: 10,
+        sixes: 193,
+        season_runs: [316, 510, 117, 183, 335, 227, 222, 280],
+        powerplay_avg: 20.1,
+        death_sr: 224.5,
+        vs_spin_avg: 28.2,
+        chase_avg: 33.6,
+        style_tags: ["Power House", "Death Over Basher", "Six Machine"],
+        radar_stats: {
+          strike_rate: 98,
+          batting_avg: 69,
+          boundaries: 89,
+          consistency: 70,
+          centuries: 20,
+          half_centuries: 50
+        }
+      },
+      {
+        id: "abd",
+        name: "AB de Villiers",
+        team: "Royal Challengers Bengaluru",
+        role: "Batsman",
+        avatar: "ABD",
+        bg_gradient: "linear-gradient(135deg, #EC1C24 0%, #0096C7 100%)",
+        batting_avg: 39.7,
+        strike_rate: 151.7,
+        total_runs: 5162,
+        centuries: 3,
+        half_centuries: 40,
+        sixes: 251,
+        season_runs: [480, 442, 454, 313, 0, 0, 0, 0], // Retired in 2021
+        powerplay_avg: 38.6,
+        death_sr: 232.5,
+        vs_spin_avg: 49.3,
+        chase_avg: 43.1,
+        style_tags: ["Mr. 360", "Late Finisher", "Genius"],
+        radar_stats: {
+          strike_rate: 90,
+          batting_avg: 90,
+          boundaries: 92,
+          consistency: 88,
+          centuries: 80,
+          half_centuries: 84
+        }
+      },
+      {
+        id: "warner",
+        name: "David Warner",
+        team: "Delhi Capitals",
+        role: "Batsman",
+        avatar: "DW",
+        bg_gradient: "linear-gradient(135deg, #004BA0 0%, #EC1C24 100%)",
+        batting_avg: 40.5,
+        strike_rate: 139.9,
+        total_runs: 6397,
+        centuries: 4,
+        half_centuries: 61,
+        sixes: 226,
+        season_runs: [0, 692, 548, 195, 432, 516, 304, 250],
+        powerplay_avg: 48.6,
+        death_sr: 174.2,
+        vs_spin_avg: 36.5,
+        chase_avg: 45.2,
+        style_tags: ["Opening Dynamo", "Consistent Run Machine", "Aggressive Anchor"],
+        radar_stats: {
+          strike_rate: 80,
+          batting_avg: 92,
+          boundaries: 84,
+          consistency: 95,
+          centuries: 88,
+          half_centuries: 98
+        }
+      },
+      {
+        id: "williamson",
+        name: "Kane Williamson",
+        team: "Gujarat Titans",
+        role: "Batsman",
+        avatar: "KW",
+        bg_gradient: "linear-gradient(135deg, #1B2B3A 0%, #EF9F22 100%)",
+        batting_avg: 36.2,
+        strike_rate: 126.1,
+        total_runs: 2101,
+        centuries: 0,
+        half_centuries: 18,
+        sixes: 64,
+        season_runs: [735, 137, 317, 266, 216, 0, 27, 120],
+        powerplay_avg: 38.2,
+        death_sr: 154.5,
+        vs_spin_avg: 44.8,
+        chase_avg: 41.5,
+        style_tags: ["Classic Anchor", "Spin Accumulator", "Ice Man"],
+        radar_stats: {
+          strike_rate: 67,
+          batting_avg: 84,
+          boundaries: 50,
+          consistency: 90,
+          centuries: 20,
+          half_centuries: 62
+        }
+      },
+      {
+        id: "pant",
+        name: "Rishabh Pant",
+        team: "Delhi Capitals",
+        role: "Wicketkeeper-Batsman",
+        avatar: "RP",
+        bg_gradient: "linear-gradient(135deg, #004BA0 0%, #EE1A22 100%)",
+        batting_avg: 35.3,
+        strike_rate: 148.4,
+        total_runs: 3284,
+        centuries: 1,
+        half_centuries: 18,
+        sixes: 154,
+        season_runs: [684, 488, 343, 419, 340, 0, 446, 420],
+        powerplay_avg: 33.5,
+        death_sr: 198.8,
+        vs_spin_avg: 43.2,
+        chase_avg: 34.6,
+        style_tags: ["Maverick Hitter", "Spin Destroyer", "Audacious Keeper"],
+        radar_stats: {
+          strike_rate: 88,
+          batting_avg: 82,
+          boundaries: 81,
+          consistency: 80,
+          centuries: 60,
+          half_centuries: 62
+        }
+      },
+      {
+        id: "chahal",
+        name: "Yuzvendra Chahal",
+        team: "Rajasthan Royals",
+        role: "Bowler",
+        avatar: "YC",
+        bg_gradient: "linear-gradient(135deg, #E73895 0%, #1f1f1f 100%)",
+        batting_avg: 6.2,
+        strike_rate: 52.4,
+        total_runs: 38,
+        centuries: 0,
+        half_centuries: 0,
+        sixes: 0,
+        season_runs: [2, 1, 0, 5, 0, 4, 6, 2],
+        powerplay_avg: 2.1,
+        death_sr: 40.0,
+        vs_spin_avg: 4.5,
+        chase_avg: 5.2,
+        style_tags: ["Spin Wizard", "Tailender", "Trickster"],
+        radar_stats: {
+          strike_rate: 15,
+          batting_avg: 12,
+          boundaries: 10,
+          consistency: 20,
+          centuries: 10,
+          half_centuries: 10
+        }
+      },
+      {
+        id: "shami",
+        name: "Mohammed Shami",
+        team: "Gujarat Titans",
+        role: "Bowler",
+        avatar: "MS",
+        bg_gradient: "linear-gradient(135deg, #1B2B3A 0%, #1f1f1f 100%)",
+        batting_avg: 5.8,
+        strike_rate: 72.1,
+        total_runs: 79,
+        centuries: 0,
+        half_centuries: 0,
+        sixes: 2,
+        season_runs: [0, 4, 12, 8, 20, 11, 0, 5],
+        powerplay_avg: 4.2,
+        death_sr: 85.0,
+        vs_spin_avg: 6.0,
+        chase_avg: 4.8,
+        style_tags: ["Seam Maestro", "Tailender", "Pace King"],
+        radar_stats: {
+          strike_rate: 20,
+          batting_avg: 10,
+          boundaries: 15,
+          consistency: 18,
+          centuries: 10,
+          half_centuries: 10
+        }
+      },
+      {
+        id: "cummins",
+        name: "Pat Cummins",
+        team: "Sunrisers Hyderabad",
+        role: "All-rounder",
+        avatar: "PC",
+        bg_gradient: "linear-gradient(135deg, #FF822E 0%, #000000 100%)",
+        batting_avg: 19.8,
+        strike_rate: 152.2,
+        total_runs: 420,
+        centuries: 0,
+        half_centuries: 3,
+        sixes: 28,
+        season_runs: [0, 0, 146, 93, 63, 0, 136, 110],
+        powerplay_avg: 15.5,
+        death_sr: 185.0,
+        vs_spin_avg: 21.0,
+        chase_avg: 24.5,
+        style_tags: ["Hard Hitter", "Clutch Finisher", "Pace All-rounder"],
+        radar_stats: {
+          strike_rate: 91,
+          batting_avg: 48,
+          boundaries: 48,
+          consistency: 60,
+          centuries: 20,
+          half_centuries: 35
+        }
+      },
+      {
+        id: "buttler",
+        name: "Jos Buttler",
+        team: "Rajasthan Royals",
+        role: "Wicketkeeper-Batsman",
+        avatar: "JB",
+        bg_gradient: "linear-gradient(135deg, #0060A9 0%, #E73895 100%)",
+        batting_avg: 37.9,
+        strike_rate: 147.5,
+        total_runs: 3582,
+        centuries: 7,
+        half_centuries: 19,
+        sixes: 161,
+        season_runs: [548, 311, 328, 254, 863, 392, 359, 410],
+        powerplay_avg: 45.6,
+        death_sr: 205.4,
+        vs_spin_avg: 36.8,
+        chase_avg: 41.2,
+        style_tags: ["Powerplay Rampager", "Centurion King", "Explosive Opener"],
+        radar_stats: {
+          strike_rate: 88,
+          batting_avg: 86,
+          boundaries: 79,
+          consistency: 85,
+          centuries: 98,
+          half_centuries: 64
+        }
+      },
+      {
+        id: "faf",
+        name: "Faf du Plessis",
+        team: "Royal Challengers Bengaluru",
+        role: "Batsman",
+        avatar: "FAF",
+        bg_gradient: "linear-gradient(135deg, #EC1C24 0%, #F5A623 100%)",
+        batting_avg: 36.9,
+        strike_rate: 136.3,
+        total_runs: 4133,
+        centuries: 0,
+        half_centuries: 33,
+        sixes: 145,
+        season_runs: [162, 396, 449, 633, 468, 730, 438, 410],
+        powerplay_avg: 40.5,
+        death_sr: 180.2,
+        vs_spin_avg: 33.4,
+        chase_avg: 38.6,
+        style_tags: ["Athletic Opener", "Cover Drive Specialist", "Calm Leader"],
+        radar_stats: {
+          strike_rate: 76,
+          batting_avg: 84,
+          boundaries: 74,
+          consistency: 92,
+          centuries: 20,
+          half_centuries: 85
+        }
+      },
+      {
+        id: "dinesh",
+        name: "Dinesh Karthik",
+        team: "Royal Challengers Bengaluru",
+        role: "Wicketkeeper-Batsman",
+        avatar: "DK",
+        bg_gradient: "linear-gradient(135deg, #EC1C24 0%, #1c1c1c 100%)",
+        batting_avg: 26.6,
+        strike_rate: 135.3,
+        total_runs: 4842,
+        centuries: 0,
+        half_centuries: 22,
+        sixes: 161,
+        season_runs: [498, 253, 169, 223, 330, 140, 326, 0],
+        powerplay_avg: 18.5,
+        death_sr: 218.4,
+        vs_spin_avg: 28.5,
+        chase_avg: 32.2,
+        style_tags: ["Finisher Specialist", "Scoop Master", "Veteran Keeper"],
+        radar_stats: {
+          strike_rate: 75,
+          batting_avg: 64,
+          boundaries: 79,
+          consistency: 74,
+          centuries: 20,
+          half_centuries: 66
+        }
+      }
+    ];
+
+    // Top 5 custom tactical verdicts
+    const customVerdicts = {
+      "kohli_vs_rohit": "Virat Kohli provides elite anchoring stability with superior chase metrics, while Rohit Sharma acts as a high-impact powerplay catalyst. Kohli's consistency makes him the ultimate accumulator, whereas Rohit's raw boundary-hitting capability provides higher peak match-winning velocity.",
+      "rohit_vs_kohli": "Virat Kohli provides elite anchoring stability with superior chase metrics, while Rohit Sharma acts as a high-impact powerplay catalyst. Kohli's consistency makes him the ultimate accumulator, whereas Rohit's raw boundary-hitting capability provides higher peak match-winning velocity.",
+      
+      "kohli_vs_dhoni": "Kohli excels in build-up and chase pacing through the middle overs, whereas Dhoni represents the ultimate finishing efficiency in high-pressure death overs. Kohli anchors the innings from the top, while Dhoni maximizes leverage with explosive late-innings cameos.",
+      "dhoni_vs_kohli": "Kohli excels in build-up and chase pacing through the middle overs, whereas Dhoni represents the ultimate finishing efficiency in high-pressure death overs. Kohli anchors the innings from the top, while Dhoni maximizes leverage with explosive late-innings cameos.",
+
+      "dhoni_vs_abd": "MS Dhoni operates as a cool, calculated finisher who relies on tactical match-ups and death-over pacing. AB de Villiers, on the other hand, is a 360-degree force of nature capable of dismantling bowling attacks at any stage, making him a more versatile batting genius.",
+      "abd_vs_dhoni": "MS Dhoni operates as a cool, calculated finisher who relies on tactical match-ups and death-over pacing. AB de Villiers, on the other hand, is a 360-degree force of nature capable of dismantling bowling attacks at any stage, making him a more versatile batting genius.",
+
+      "rohit_vs_dhoni": "Rohit Sharma dominates the powerplay and sets the tone with aggressive boundary striking at the top of the order. MS Dhoni exerts his influence in the death overs, absorbing pressure and using tactical spacing to finish games in close chases.",
+      "dhoni_vs_rohit": "Rohit Sharma dominates the powerplay and sets the tone with aggressive boundary striking at the top of the order. MS Dhoni exerts his influence in the death overs, absorbing pressure and using tactical spacing to finish games in close chases.",
+
+      "bumrah_vs_cummins": "Jasprit Bumrah is a defensive bowling maestro with a lethal yorker and unparalleled economy in the powerplay and death overs. Pat Cummins acts as a clutch leader and pace all-rounder, offering valuable lower-order batting depth alongside aggressive seam bowling.",
+      "cummins_vs_bumrah": "Jasprit Bumrah is a defensive bowling maestro with a lethal yorker and unparalleled economy in the powerplay and death overs. Pat Cummins acts as a clutch leader and pace all-rounder, offering valuable lower-order batting depth alongside aggressive seam bowling."
+    };
+
+    // ----------------------------------------------------
+    // INITIALIZATION & DOM SELECTORS
+    // ----------------------------------------------------
+    let selectedPlayer1 = null;
+    let selectedPlayer2 = null;
+    let radarChart = null;
+    let lineChart = null;
+
+    // Elements
+    const themeToggleBtn = document.getElementById("theme-toggle");
+    const p1Search = document.getElementById("p1-search");
+    const p2Search = document.getElementById("p2-search");
+    const p1Clear = document.getElementById("p1-clear");
+    const p2Clear = document.getElementById("p2-clear");
+    const p1Dropdown = document.getElementById("p1-dropdown");
+    const p2Dropdown = document.getElementById("p2-dropdown");
+    const emptyState = document.getElementById("empty-state");
+    const dashboard = document.getElementById("comparator-dashboard");
+    
+    // Header selectors
+    const p1ProfileCard = document.getElementById("p1-profile-card");
+    const p2ProfileCard = document.getElementById("p2-profile-card");
+    const p2Placeholder = document.getElementById("p2-profile-placeholder");
+    
+    const p1Name = document.getElementById("p1-name");
+    const p1Team = document.getElementById("p1-team");
+    const p1Role = document.getElementById("p1-role");
+    const p1Avatar = document.getElementById("p1-avatar");
+    
+    const p2Name = document.getElementById("p2-name");
+    const p2Team = document.getElementById("p2-team");
+    const p2Role = document.getElementById("p2-role");
+    const p2Avatar = document.getElementById("p2-avatar");
+
+    // Season Years
+    const seasonYears = ["2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"];
+
+    // ----------------------------------------------------
+    // LIGHT/DARK MODE TOGGLE & CHART STYLES
+    // ----------------------------------------------------
+    function getChartThemeColors() {
+      const isLight = document.body.classList.contains("light-theme");
+      const textColor = getComputedStyle(document.body).getPropertyValue('--text-secondary').trim() || (isLight ? '#64748b' : '#a0a0a0');
+      const gridColor = getComputedStyle(document.body).getPropertyValue('--grid-line-color').trim() || (isLight ? 'rgba(0, 0, 0, 0.08)' : 'rgba(255, 255, 255, 0.08)');
+      
+      const p1Color = isLight ? '#0f766e' : '#1D9E75';
+      const p1BgRadar = isLight ? 'rgba(15, 118, 110, 0.25)' : 'rgba(29, 158, 117, 0.2)';
+      const p1BgLine = isLight ? 'rgba(15, 118, 110, 0.15)' : 'rgba(29, 158, 117, 0.1)';
+
+      const p2Color = isLight ? '#1d4ed8' : '#378ADD';
+      const p2BgRadar = isLight ? 'rgba(29, 78, 216, 0.25)' : 'rgba(55, 138, 221, 0.2)';
+      const p2BgLine = isLight ? 'rgba(29, 78, 216, 0.15)' : 'rgba(55, 138, 221, 0.1)';
+
+      return { textColor, gridColor, p1Color, p1BgRadar, p1BgLine, p2Color, p2BgRadar, p2BgLine };
+    }
+
+    // Auto-detect iframe or parent theme on load
+    try {
+      if (window.parent && window.parent.document) {
+        const parentHtml = window.parent.document.documentElement;
+        if (parentHtml.classList.contains('light') || parentHtml.getAttribute('data-theme') === 'light' || window.parent.document.body.classList.contains('light-theme')) {
+          document.body.classList.add("light-theme");
+          if (themeToggleBtn) themeToggleBtn.innerHTML = '<i class="ti ti-sun"></i>';
+        }
+      }
+    } catch (e) {}
+
+    themeToggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("light-theme");
+      const isLight = document.body.classList.contains("light-theme");
+      themeToggleBtn.innerHTML = isLight ? '<i class="ti ti-sun"></i>' : '<i class="ti ti-moon"></i>';
+      
+      // Update Chart fonts and colors dynamically
+      updateChartStyles();
+    });
+
+    function updateChartStyles() {
+      const colors = getChartThemeColors();
+
+      // Radar
+      if (radarChart) {
+        radarChart.options.scales.r.grid.color = colors.gridColor;
+        radarChart.options.scales.r.angleLines.color = colors.gridColor;
+        radarChart.options.scales.r.pointLabels.color = colors.textColor;
+
+        if (radarChart.data.datasets[0]) {
+          radarChart.data.datasets[0].borderColor = colors.p1Color;
+          radarChart.data.datasets[0].backgroundColor = colors.p1BgRadar;
+          radarChart.data.datasets[0].pointBackgroundColor = colors.p1Color;
+          radarChart.data.datasets[0].pointHoverBorderColor = colors.p1Color;
+        }
+        if (radarChart.data.datasets[1]) {
+          radarChart.data.datasets[1].borderColor = colors.p2Color;
+          radarChart.data.datasets[1].backgroundColor = colors.p2BgRadar;
+          radarChart.data.datasets[1].pointBackgroundColor = colors.p2Color;
+          radarChart.data.datasets[1].pointHoverBorderColor = colors.p2Color;
+        }
+        radarChart.update();
+      }
+
+      // Line
+      if (lineChart) {
+        lineChart.options.scales.x.grid.color = colors.gridColor;
+        lineChart.options.scales.x.ticks.color = colors.textColor;
+        lineChart.options.scales.y.grid.color = colors.gridColor;
+        lineChart.options.scales.y.ticks.color = colors.textColor;
+        lineChart.options.scales.y.title.color = colors.textColor;
+
+        if (lineChart.data.datasets[0]) {
+          lineChart.data.datasets[0].borderColor = colors.p1Color;
+          lineChart.data.datasets[0].backgroundColor = colors.p1BgLine;
+          lineChart.data.datasets[0].pointBackgroundColor = colors.p1Color;
+        }
+        if (lineChart.data.datasets[1]) {
+          lineChart.data.datasets[1].borderColor = colors.p2Color;
+          lineChart.data.datasets[1].backgroundColor = colors.p2BgLine;
+          lineChart.data.datasets[1].pointBackgroundColor = colors.p2Color;
+        }
+        lineChart.update();
+      }
+    }
+
+    // ----------------------------------------------------
+    // AUTOCOMPLETE SYSTEM
+    // ----------------------------------------------------
+    // ----------------------------------------------------
+    // DYNAMIC DATABASE PLAYER MAPPING
+    // ----------------------------------------------------
+    String.prototype.hashCode = function() {
+      var hash = 0, i, chr;
+      if (this.length === 0) return hash;
+      for (i = 0; i < this.length; i++) {
+        chr   = this.charCodeAt(i);
+        hash  = ((hash << 5) - hash) + chr;
+        hash |= 0;
+      }
+      return hash;
+    };
+
+    function mapApiPlayerToPlayerObject(p) {
+      // 1. Check if the player is in the curated playerDb
+      const match = playerDb.find(item => item.name.toLowerCase() === p.player.toLowerCase());
+      if (match) {
+        const updated = { ...match };
+        if (p.batting) {
+          updated.batting_avg = p.batting.average;
+          updated.strike_rate = p.batting.strike_rate;
+          updated.total_runs = p.batting.runs;
+          updated.centuries = p.batting.hundreds;
+          updated.half_centuries = p.batting.fifties;
+          updated.sixes = p.batting.sixes;
+
+          // update radar stats dynamically based on actual database stats
+          updated.radar_stats.strike_rate = Math.round(Math.min(100, Math.max(15, ((p.batting.strike_rate - 90) / 1.1))));
+          updated.radar_stats.batting_avg = Math.round(Math.min(100, Math.max(15, p.batting.average * 2)));
+          updated.radar_stats.boundaries = Math.round(Math.min(100, Math.max(15, p.batting.sixes * 0.4)));
+          updated.radar_stats.centuries = Math.round(Math.min(100, Math.max(15, p.batting.hundreds * 14)));
+          updated.radar_stats.half_centuries = Math.round(Math.min(100, Math.max(15, p.batting.fifties * 1.8)));
+        }
+        return updated;
+      }
+
+      // 2. Generate a custom profile for database players
+      const isAllRounder = p.batting && p.bowling;
+      const isBowler = !p.batting && p.bowling;
+      const role = isAllRounder ? "All-rounder" : isBowler ? "Bowler" : "Batsman";
+      const initials = p.player.split(" ").map(n => n[0]).join("").substring(0, 3);
+      
+      const gradients = [
+        "linear-gradient(135deg, #1e293b 0%, #0f172a 100%)",
+        "linear-gradient(135deg, #111827 0%, #030712 100%)",
+        "linear-gradient(135deg, #064e3b 0%, #022c22 100%)",
+        "linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%)",
+        "linear-gradient(135deg, #581c87 0%, #1e1b4b 100%)"
+      ];
+      const bg_gradient = gradients[Math.abs(p.player.hashCode()) % gradients.length] || gradients[0];
+
+      const batting_avg = p.batting ? p.batting.average : 0.0;
+      const strike_rate = p.batting ? p.batting.strike_rate : 0.0;
+      const total_runs = p.batting ? p.batting.runs : 0;
+      const centuries = p.batting ? p.batting.hundreds : 0;
+      const half_centuries = p.batting ? p.batting.fifties : 0;
+      const sixes = p.batting ? p.batting.sixes : 0;
+
+      const powerplay_avg = batting_avg ? batting_avg * 1.05 : 0.0;
+      const death_sr = strike_rate ? strike_rate * 1.4 : 0.0;
+      const vs_spin_avg = batting_avg ? batting_avg * 0.98 : 0.0;
+      const chase_avg = batting_avg ? batting_avg * 1.02 : 0.0;
+
+      let style_tags = [];
+      if (isBowler) {
+        style_tags = ["Pace Maestro", "Death Bowler", "Seam Specialist"];
+        if (p.bowling && p.bowling.economy < 7.5) style_tags = ["Spin Wizard", "Economy King", "Trickster"];
+      } else {
+        if (strike_rate > 145) {
+          style_tags = ["Power Hitter", "Finisher", "Six Machine"];
+        } else if (batting_avg > 38) {
+          style_tags = ["Anchor", "Spin Destroyer", "Chase Specialist"];
+        } else {
+          style_tags = ["Opening Batter", "Cover Specialist", "Technician"];
+        }
+      }
+
+      const radar_stats = {
+        strike_rate: batting_avg ? Math.round(Math.min(100, Math.max(15, (strike_rate - 90) / 1.1))) : 20,
+        batting_avg: batting_avg ? Math.round(Math.min(100, Math.max(15, batting_avg * 2))) : 15,
+        boundaries: batting_avg ? Math.round(Math.min(100, Math.max(15, sixes * 0.4))) : 15,
+        consistency: batting_avg ? 80 : 30,
+        centuries: batting_avg ? Math.round(Math.min(100, Math.max(15, centuries * 14))) : 10,
+        half_centuries: batting_avg ? Math.round(Math.min(100, Math.max(15, half_centuries * 1.8))) : 10
+      };
+
+      return {
+        id: p.player.toLowerCase().replace(/[^a-z]/g, ""),
+        name: p.player,
+        team: isBowler ? "IPL Bowling Squad" : "IPL Franchise",
+        role: role,
+        avatar: initials,
+        bg_gradient: bg_gradient,
+        batting_avg: batting_avg,
+        strike_rate: strike_rate,
+        total_runs: total_runs,
+        centuries: centuries,
+        half_centuries: half_centuries,
+        sixes: sixes,
+        season_runs: [0, 0, 0, 0, 0, 0, 0, 0],
+        powerplay_avg: powerplay_avg,
+        death_sr: death_sr,
+        vs_spin_avg: vs_spin_avg,
+        chase_avg: chase_avg,
+        style_tags: style_tags,
+        radar_stats: radar_stats
+      };
+    }
+
+    async function loadSeasonRuns(playerObj) {
+      try {
+        const apiBase = "http://127.0.0.1:8000";
+        const res = await fetch(`${apiBase}/api/batting/?player=${encodeURIComponent(playerObj.name)}&page_size=100`);
+        const data = await res.json();
+        const results = data.results || [];
+
+        const seasonRuns = [0, 0, 0, 0, 0, 0, 0, 0];
+        const years = [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025];
+
+        results.forEach(rec => {
+          if (rec.season > 0 && rec.player.toLowerCase() === playerObj.name.toLowerCase()) {
+            const idx = years.indexOf(rec.season);
+            if (idx !== -1) {
+              seasonRuns[idx] = rec.runs;
+            }
+          }
+        });
+
+        playerObj.season_runs = seasonRuns;
+      } catch (err) {
+        console.error("Error loading season runs", err);
+        playerObj.season_runs = [0, 0, 0, 0, 0, 0, 0, 0];
+      }
+    }
+
+    // ----------------------------------------------------
+    // AUTOCOMPLETE SYSTEM
+    // ----------------------------------------------------
+    function setupAutocomplete(inputEl, dropdownEl, clearEl, onSelect, playerKey) {
+      inputEl.addEventListener("input", (e) => {
+        const query = e.target.value.trim();
+        dropdownEl.innerHTML = "";
+
+        if (!query) {
+          dropdownEl.classList.remove("active");
+          dropdownEl.style.display = "none";
+          clearEl.style.display = "none";
+          return;
+        }
+
+        clearEl.style.display = "flex";
+
+        if (inputEl.searchTimeout) clearTimeout(inputEl.searchTimeout);
+
+        inputEl.searchTimeout = setTimeout(async () => {
+          try {
+            const apiBase = "http://127.0.0.1:8000";
+            const response = await fetch(`${apiBase}/api/players/?search=${encodeURIComponent(query)}`);
+            const data = await response.json();
+            const results = data.results || [];
+
+            const filtered = results.filter(p => {
+              if (playerKey === "p2" && selectedPlayer1 && p.player === selectedPlayer1.name) return false;
+              if (playerKey === "p1" && selectedPlayer2 && p.player === selectedPlayer2.name) return false;
+              return true;
+            });
+
+            if (filtered.length === 0) {
+              dropdownEl.innerHTML = `<div style="padding: 12px; font-size: 13px; color: var(--text-muted);">No players found</div>`;
+              dropdownEl.classList.add("active");
+              dropdownEl.style.display = "block";
+              return;
+            }
+
+            dropdownEl.innerHTML = "";
+            filtered.forEach((p, idx) => {
+              const mappedPlayer = mapApiPlayerToPlayerObject(p);
+              const item = document.createElement("div");
+              item.className = "autocomplete-item";
+              if (idx === 0) item.classList.add("active");
+
+              item.innerHTML = `
+                <div class="autocomplete-details">
+                  <div class="player-avatar-small" style="background: ${mappedPlayer.bg_gradient}">${mappedPlayer.avatar}</div>
+                  <div>
+                    <div class="player-name-small">${mappedPlayer.name}</div>
+                    <div class="player-team-small">${mappedPlayer.team}</div>
+                  </div>
+                </div>
+                <span class="player-role-badge">${mappedPlayer.role}</span>
+              `;
+
+              item.addEventListener("click", async () => {
+                inputEl.value = mappedPlayer.name;
+                dropdownEl.classList.remove("active");
+                dropdownEl.style.display = "none";
+                
+                await loadSeasonRuns(mappedPlayer);
+                onSelect(mappedPlayer);
+              });
+
+              dropdownEl.appendChild(item);
+            });
+
+            dropdownEl.classList.add("active");
+            dropdownEl.style.display = "block";
+
+          } catch (err) {
+            console.error("Failed to query players", err);
+          }
+        }, 300);
+      });
+
+      // Handle blur & keys
+      inputEl.addEventListener("keydown", (e) => {
+        const items = dropdownEl.querySelectorAll(".autocomplete-item");
+        if (items.length === 0) return;
+
+        let activeIdx = -1;
+        items.forEach((item, idx) => {
+          if (item.classList.contains("active")) activeIdx = idx;
+        });
+
+        if (e.key === "ArrowDown") {
+          e.preventDefault();
+          if (activeIdx < items.length - 1) {
+            if (activeIdx !== -1) items[activeIdx].classList.remove("active");
+            items[activeIdx + 1].classList.add("active");
+            items[activeIdx + 1].scrollIntoView({ block: "nearest" });
+          }
+        } else if (e.key === "ArrowUp") {
+          e.preventDefault();
+          if (activeIdx > 0) {
+            items[activeIdx].classList.remove("active");
+            items[activeIdx - 1].classList.add("active");
+            items[activeIdx - 1].scrollIntoView({ block: "nearest" });
+          }
+        } else if (e.key === "Enter") {
+          e.preventDefault();
+          if (activeIdx !== -1) {
+            items[activeIdx].click();
+          }
+        } else if (e.key === "Escape") {
+          dropdownEl.classList.remove("active");
+          dropdownEl.style.display = "none";
+        }
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener("click", (e) => {
+        if (e.target !== inputEl && e.target !== dropdownEl && !dropdownEl.contains(e.target)) {
+          dropdownEl.classList.remove("active");
+          dropdownEl.style.display = "none";
+        }
+      });
+
+      // Clear button handler
+      clearEl.addEventListener("click", () => {
+        inputEl.value = "";
+        clearEl.style.display = "none";
+        dropdownEl.innerHTML = "";
+        dropdownEl.classList.remove("active");
+        dropdownEl.style.display = "none";
+        onSelect(null);
+      });
+    }
+
+    // Select Player 1
+    setupAutocomplete(p1Search, p1Dropdown, p1Clear, (player) => {
+      selectedPlayer1 = player;
+      if (player) {
+        p2Search.disabled = false;
+        updateDashboard();
+      } else {
+        selectedPlayer2 = null; // Reset player 2 as well if player 1 is cleared
+        p2Search.value = "";
+        p2Search.disabled = true;
+        p2Clear.style.display = "none";
+        updateDashboard();
+      }
+    }, "p1");
+
+    // Select Player 2
+    setupAutocomplete(p2Search, p2Dropdown, p2Clear, (player) => {
+      selectedPlayer2 = player;
+      updateDashboard();
+    }, "p2");
+
+    // ----------------------------------------------------
+    // UPDATE DASHBOARD STATE
+    // ----------------------------------------------------
+    function updateDashboard() {
+      if (!selectedPlayer1) {
+        // Mode 0: No Player Selected
+        emptyState.style.display = "flex";
+        dashboard.classList.remove("active");
+        dashboard.classList.remove("vs-mode");
+        return;
+      }
+
+      // Hide empty state and show dashboard
+      emptyState.style.display = "none";
+      dashboard.classList.add("active");
+
+      // Set Player 1 Profile Card info
+      p1Name.textContent = selectedPlayer1.name;
+      p1Team.textContent = selectedPlayer1.team;
+      p1Role.textContent = selectedPlayer1.role;
+      p1Avatar.textContent = selectedPlayer1.avatar;
+      p1Avatar.style.background = selectedPlayer1.bg_gradient;
+      document.getElementById("legend-p1-name").textContent = selectedPlayer1.name;
+
+      if (selectedPlayer2) {
+        // Mode 2: H2H Comparison Mode
+        dashboard.classList.add("vs-mode");
+        p2Placeholder.classList.add("hidden");
+        p2ProfileCard.classList.remove("hidden");
+
+        p2Name.textContent = selectedPlayer2.name;
+        p2Team.textContent = selectedPlayer2.team;
+        p2Role.textContent = selectedPlayer2.role;
+        p2Avatar.textContent = selectedPlayer2.avatar;
+        p2Avatar.style.background = selectedPlayer2.bg_gradient;
+        document.getElementById("legend-p2-name").textContent = selectedPlayer2.name;
+
+        // Render H2H items
+        renderProgressBars(true);
+        renderMilestoneCards(true);
+        renderSituationalStats(true);
+        renderAIVerdict();
+      } else {
+        // Mode 1: Single Player Profile Mode
+        dashboard.classList.remove("vs-mode");
+        p2Placeholder.classList.remove("hidden");
+        p2ProfileCard.classList.add("hidden");
+
+        // Render Single Player items
+        renderProgressBars(false);
+        renderMilestoneCards(false);
+        renderSituationalStats(false);
+      }
+
+      // Render Charts
+      renderRadarChart();
+      renderLineChart();
+    }
+
+    // ----------------------------------------------------
+    // METRICS RENDERING FUNCTIONS
+    // ----------------------------------------------------
+
+    function renderProgressBars(vsActive) {
+      const p1 = selectedPlayer1;
+      const p2 = selectedPlayer2;
+
+      // Batting Average Progress Bar (Max 50)
+      document.getElementById("bar-p1-name-avg").textContent = p1.name;
+      document.getElementById("bar-p1-val-avg").textContent = p1.batting_avg.toFixed(1);
+      document.getElementById("bar-p1-fill-avg").style.width = `${Math.min(100, (p1.batting_avg / 50) * 100)}%`;
+
+      // Strike Rate Progress Bar (Max 180)
+      document.getElementById("bar-p1-name-sr").textContent = p1.name;
+      document.getElementById("bar-p1-val-sr").textContent = p1.strike_rate.toFixed(1);
+      document.getElementById("bar-p1-fill-sr").style.width = `${Math.min(100, (p1.strike_rate / 180) * 100)}%`;
+
+      // Total Runs Progress Bar (Max 8000)
+      document.getElementById("bar-p1-name-runs").textContent = p1.name;
+      document.getElementById("bar-p1-val-runs").textContent = p1.total_runs.toLocaleString();
+      document.getElementById("bar-p1-fill-runs").style.width = `${Math.min(100, (p1.total_runs / 8000) * 100)}%`;
+
+      // Sixes Progress Bar (Max 300)
+      document.getElementById("bar-p1-name-sixes").textContent = p1.name;
+      document.getElementById("bar-p1-val-sixes").textContent = p1.sixes;
+      document.getElementById("bar-p1-fill-sixes").style.width = `${Math.min(100, (p1.sixes / 300) * 100)}%`;
+
+      if (vsActive && p2) {
+        document.getElementById("bar-p2-name-avg").textContent = p2.name;
+        document.getElementById("bar-p2-val-avg").textContent = p2.batting_avg.toFixed(1);
+        document.getElementById("bar-p2-fill-avg").style.width = `${Math.min(100, (p2.batting_avg / 50) * 100)}%`;
+
+        document.getElementById("bar-p2-name-sr").textContent = p2.name;
+        document.getElementById("bar-p2-val-sr").textContent = p2.strike_rate.toFixed(1);
+        document.getElementById("bar-p2-fill-sr").style.width = `${Math.min(100, (p2.strike_rate / 180) * 100)}%`;
+
+        document.getElementById("bar-p2-name-runs").textContent = p2.name;
+        document.getElementById("bar-p2-val-runs").textContent = p2.total_runs.toLocaleString();
+        document.getElementById("bar-p2-fill-runs").style.width = `${Math.min(100, (p2.total_runs / 8000) * 100)}%`;
+
+        document.getElementById("bar-p2-name-sixes").textContent = p2.name;
+        document.getElementById("bar-p2-val-sixes").textContent = p2.sixes;
+        document.getElementById("bar-p2-fill-sixes").style.width = `${Math.min(100, (p2.sixes / 300) * 100)}%`;
+      }
+    }
+
+    function renderMilestoneCards(vsActive) {
+      const p1 = selectedPlayer1;
+      const p2 = selectedPlayer2;
+
+      document.getElementById("milestone-p1-100s").textContent = p1.centuries;
+      document.getElementById("milestone-p1-50s").textContent = p1.half_centuries;
+      document.getElementById("milestone-p1-sixes").textContent = p1.sixes;
+
+      if (vsActive && p2) {
+        document.getElementById("milestone-p2-100s").textContent = p2.centuries;
+        document.getElementById("milestone-p2-50s").textContent = p2.half_centuries;
+        document.getElementById("milestone-p2-sixes").textContent = p2.sixes;
+      }
+    }
+
+    function renderSituationalStats(vsActive) {
+      const p1 = selectedPlayer1;
+      const p2 = selectedPlayer2;
+
+      // P1 style tags
+      document.getElementById("style-p1-name").textContent = p1.name;
+      const p1Chips = document.getElementById("style-p1-chips");
+      p1Chips.innerHTML = "";
+      p1.style_tags.forEach(tag => {
+        p1Chips.innerHTML += `<span class="style-chip p1">${tag}</span>`;
+      });
+
+      // P1 values in table
+      document.getElementById("sit-header-p1").textContent = p1.avatar;
+      document.getElementById("sit-p1-pp").textContent = p1.powerplay_avg.toFixed(1);
+      document.getElementById("sit-p1-death").textContent = p1.death_sr.toFixed(1);
+      document.getElementById("sit-p1-spin").textContent = p1.vs_spin_avg.toFixed(1);
+      document.getElementById("sit-p1-chase").textContent = p1.chase_avg.toFixed(1);
+
+      if (vsActive && p2) {
+        document.getElementById("style-p2-name").textContent = p2.name;
+        const p2Chips = document.getElementById("style-p2-chips");
+        p2Chips.innerHTML = "";
+        p2.style_tags.forEach(tag => {
+          p2Chips.innerHTML += `<span class="style-chip p2">${tag}</span>`;
+        });
+
+        document.getElementById("sit-header-p2").textContent = p2.avatar;
+        document.getElementById("sit-p2-pp").textContent = p2.powerplay_avg.toFixed(1);
+        document.getElementById("sit-p2-death").textContent = p2.death_sr.toFixed(1);
+        document.getElementById("sit-p2-spin").textContent = p2.vs_spin_avg.toFixed(1);
+        document.getElementById("sit-p2-chase").textContent = p2.chase_avg.toFixed(1);
+      }
+    }
+
+    function renderAIVerdict() {
+      if (!selectedPlayer1 || !selectedPlayer2) return;
+      const p1 = selectedPlayer1;
+      const p2 = selectedPlayer2;
+      
+      const key1 = `${p1.id}_vs_${p2.id}`;
+      const key2 = `${p2.id}_vs_${p1.id}`;
+
+      let verdictText = "";
+
+      if (customVerdicts[key1]) {
+        verdictText = customVerdicts[key1];
+      } else if (customVerdicts[key2]) {
+        verdictText = customVerdicts[key2];
+      } else {
+        // Fallback verdict logic based on statistics
+        const srDiff = p1.strike_rate - p2.strike_rate;
+        const avgDiff = p1.batting_avg - p2.batting_avg;
+
+        let sentence1 = "";
+        let sentence2 = "";
+
+        if (avgDiff > 5) {
+          sentence1 = `${p1.name} commands a significant advantage in batting consistency, maintaining a career average of ${p1.batting_avg} vs ${p2.name}'s ${p2.batting_avg}.`;
+        } else if (avgDiff < -5) {
+          sentence1 = `${p2.name} offers superior innings stability, anchoring matches with a career average of ${p2.batting_avg} compared to ${p1.name}'s ${p1.batting_avg}.`;
+        } else {
+          sentence1 = `Both ${p1.name} (${p1.batting_avg} Avg) and ${p2.name} (${p2.batting_avg} Avg) hold highly similar profiles in terms of run-scoring consistency.`;
+        }
+
+        if (srDiff > 10) {
+          sentence2 = `However, ${p1.name} operates at a much higher velocity with a strike rate of ${p1.strike_rate}, making them a more explosive options in situational play over ${p2.name} (${p2.strike_rate} SR).`;
+        } else if (srDiff < -10) {
+          sentence2 = `Crucially, ${p2.name} accelerates matching momentum with an impressive strike rate of ${p2.strike_rate}, compared to ${p1.name}'s more measured tempo of ${p1.strike_rate} SR.`;
+        } else {
+          sentence2 = `Their scoring tempos are extremely comparable, meaning the ultimate selection depends on tactical team chemistry and venue conditions.`;
+        }
+
+        verdictText = `${sentence1} ${sentence2}`;
+      }
+
+      document.getElementById("verdict-text").textContent = verdictText;
+    }
+
+    // ----------------------------------------------------
+    // CHART.JS RENDER CODES
+    // ----------------------------------------------------
+
+    function renderRadarChart() {
+      const p1 = selectedPlayer1;
+      const p2 = selectedPlayer2;
+      const colors = getChartThemeColors();
+
+      // Extract scores for chart datasets
+      const p1Data = [
+        p1.radar_stats.strike_rate,
+        p1.radar_stats.batting_avg,
+        p1.radar_stats.boundaries,
+        p1.radar_stats.consistency,
+        p1.radar_stats.centuries,
+        p1.radar_stats.half_centuries
+      ];
+
+      const datasets = [{
+        label: p1.name,
+        data: p1Data,
+        backgroundColor: colors.p1BgRadar,
+        borderColor: colors.p1Color,
+        borderWidth: 2,
+        pointBackgroundColor: colors.p1Color,
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: colors.p1Color
+      }];
+
+      if (p2) {
+        const p2Data = [
+          p2.radar_stats.strike_rate,
+          p2.radar_stats.batting_avg,
+          p2.radar_stats.boundaries,
+          p2.radar_stats.consistency,
+          p2.radar_stats.centuries,
+          p2.radar_stats.half_centuries
+        ];
+
+        datasets.push({
+          label: p2.name,
+          data: p2Data,
+          backgroundColor: colors.p2BgRadar,
+          borderColor: colors.p2Color,
+          borderWidth: 2,
+          pointBackgroundColor: colors.p2Color,
+          pointBorderColor: '#fff',
+          pointHoverBackgroundColor: '#fff',
+          pointHoverBorderColor: colors.p2Color
+        });
+      }
+
+      if (radarChart) {
+        radarChart.data.datasets = datasets;
+        updateChartStyles();
+        return;
+      }
+
+      const ctx = document.getElementById('radarChartCanvas').getContext('2d');
+      radarChart = new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: ['Strike Rate', 'Batting Avg', 'Boundaries', 'Consistency', 'Centuries', 'Half-Centuries'],
+          datasets: datasets
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            r: {
+              grid: {
+                color: colors.gridColor
+              },
+              angleLines: {
+                color: colors.gridColor
+              },
+              ticks: {
+                display: false,
+                maxTicksLimit: 5
+              },
+              pointLabels: {
+                color: colors.textColor,
+                font: {
+                  family: 'Inter',
+                  size: 11,
+                  weight: '600'
+                }
+              },
+              suggestedMin: 0,
+              suggestedMax: 100
+            }
+          },
+          plugins: {
+            legend: {
+              display: false
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  const playerIdx = context.datasetIndex;
+                  const player = playerIdx === 0 ? selectedPlayer1 : selectedPlayer2;
+                  if (!player) return '';
+                  
+                  const labelIndex = context.dataIndex;
+                  const labels = ['Strike Rate', 'Batting Avg', 'Boundaries', 'Consistency', 'Centuries', 'Half-Centuries'];
+                  const valMap = {
+                    0: player.strike_rate + ' SR',
+                    1: player.batting_avg + ' Avg',
+                    2: player.sixes + ' Sixes',
+                    3: player.radar_stats.consistency + '% Consistency',
+                    4: player.centuries + ' 100s',
+                    5: player.half_centuries + ' 50s'
+                  };
+                  return `${player.name}: ${valMap[labelIndex]}`;
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+
+    function renderLineChart() {
+      const p1 = selectedPlayer1;
+      const p2 = selectedPlayer2;
+      const colors = getChartThemeColors();
+
+      const datasets = [{
+        label: p1.name,
+        data: p1.season_runs,
+        borderColor: colors.p1Color,
+        backgroundColor: colors.p1BgLine,
+        borderWidth: 3,
+        pointBackgroundColor: colors.p1Color,
+        pointBorderWidth: 2,
+        tension: 0.35,
+        fill: true
+      }];
+
+      if (p2) {
+        datasets.push({
+          label: p2.name,
+          data: p2.season_runs,
+          borderColor: colors.p2Color,
+          backgroundColor: colors.p2BgLine,
+          borderWidth: 3,
+          pointBackgroundColor: colors.p2Color,
+          pointBorderWidth: 2,
+          tension: 0.35,
+          fill: true
+        });
+      }
+
+      if (lineChart) {
+        lineChart.data.datasets = datasets;
+        updateChartStyles();
+        return;
+      }
+
+      const ctx = document.getElementById('lineChartCanvas').getContext('2d');
+      lineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: seasonYears,
+          datasets: datasets
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            x: {
+              grid: {
+                color: colors.gridColor,
+                drawBorder: false
+              },
+              ticks: {
+                color: colors.textColor,
+                font: {
+                  family: 'Inter',
+                  size: 11
+                }
+              }
+            },
+            y: {
+              grid: {
+                color: colors.gridColor,
+                drawBorder: false
+              },
+              ticks: {
+                color: colors.textColor,
+                font: {
+                  family: 'Inter',
+                  size: 11
+                }
+              },
+              title: {
+                display: true,
+                text: 'Runs per Season',
+                color: colors.textColor,
+                font: {
+                  family: 'Inter',
+                  size: 12,
+                  weight: '600'
+                }
+              }
+            }
+          },
+          plugins: {
+            legend: {
+              display: false
+            }
+          }
+        }
+      });
+    }
+
+    // ----------------------------------------------------
+    // VISUAL FEEDBACK FOR FILTERS (visual mock state)
+    // ----------------------------------------------------
+    document.querySelectorAll(".filter-select").forEach(select => {
+      select.addEventListener("change", (e) => {
+        // Toggle selected styling to indicate visual update
+        if (e.target.value !== "all") {
+          e.target.style.borderColor = "var(--brand-color)";
+          e.target.style.boxShadow = "0 0 0 3px var(--border-glow)";
+        } else {
+          e.target.style.borderColor = "var(--border-color)";
+          e.target.style.boxShadow = "none";
+        }
+      });
+    });
+
+  </script>
+</body>
+</html>

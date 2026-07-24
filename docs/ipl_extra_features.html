@@ -1,0 +1,127 @@
+
+<style>
+* { box-sizing: border-box; }
+.wrap { padding: 1rem 0 2rem; }
+.section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.07em; color: var(--color-text-tertiary); text-transform: uppercase; margin: 2rem 0 0.75rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 12px; }
+.card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.15rem; }
+.card-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin: 0 0 5px; display: flex; align-items: center; gap: 7px; }
+.card-desc { font-size: 12px; color: var(--color-text-secondary); margin: 0 0 10px; line-height: 1.5; }
+.chips { display: flex; flex-wrap: wrap; gap: 4px; }
+.chip { font-size: 10px; padding: 2px 7px; border-radius: 20px; }
+.c-blue { background: #E6F1FB; color: #0C447C; }
+.c-amber { background: #FAEEDA; color: #633806; }
+.c-teal { background: #E1F5EE; color: #085041; }
+.c-purple { background: #EEEDFE; color: #3C3489; }
+.c-coral { background: #FAECE7; color: #712B13; }
+.c-green { background: #EAF3DE; color: #27500A; }
+.c-pink { background: #FBEAF0; color: #72243E; }
+.badge { font-size: 10px; padding: 2px 8px; border-radius: 20px; font-weight: 500; margin-left: 6px; }
+.badge-new { background: #E1F5EE; color: #085041; }
+.badge-hot { background: #FAECE7; color: #712B13; }
+.badge-ai { background: #EEEDFE; color: #3C3489; }
+.divider { height: 0.5px; background: var(--color-border-tertiary); margin: 1.5rem 0; }
+.build-btn { margin-top: 2rem; display: block; width: 100%; padding: 12px; background: #185FA5; color: #E6F1FB; border: none; border-radius: var(--border-radius-lg); font-size: 14px; font-weight: 500; cursor: pointer; }
+.build-btn:hover { background: #0C447C; }
+</style>
+
+<h2 class="sr-only">Extra features to add to the IPL website</h2>
+
+<div class="wrap">
+
+<div class="section-label">Analytics & Insights</div>
+<div class="grid">
+  <div class="card">
+    <p class="card-title"><i class="ti ti-device-analytics" style="font-size:16px;color:#378ADD" aria-hidden="true"></i> Performance heatmap</p>
+    <p class="card-desc">Visual grid showing a player's runs or wickets across all seasons. Dark = big season, light = quiet year. See careers at a glance.</p>
+    <div class="chips"><span class="chip c-blue">Most Runs</span><span class="chip c-blue">Per season</span></div>
+  </div>
+  <div class="card">
+    <p class="card-title"><i class="ti ti-trending-up" style="font-size:16px;color:#639922" aria-hidden="true"></i> Form tracker</p>
+    <p class="card-desc">Line graph of a player's season-by-season average. Instantly see peak years, decline, and comeback seasons.</p>
+    <div class="chips"><span class="chip c-green">Avg trends</span><span class="chip c-green">All seasons</span></div>
+  </div>
+  <div class="card">
+    <p class="card-title"><i class="ti ti-radar" style="font-size:16px;color:#7F77DD" aria-hidden="true"></i> Player skill radar</p>
+    <p class="card-desc">Hexagonal radar chart scoring every player on 6 axes: runs, strike rate, avg, 4s, 6s, consistency. Like a FIFA rating card.</p>
+    <div class="chips"><span class="chip c-purple">Batting stats</span><span class="chip c-purple">Visual score</span></div>
+  </div>
+  <div class="card">
+    <p class="card-title"><i class="ti ti-chart-dots" style="font-size:16px;color:#BA7517" aria-hidden="true"></i> Run rate evolution</p>
+    <p class="card-desc">How IPL scoring rates changed from 2008 to 2022. Did batters get more aggressive? Compare era vs era.</p>
+    <div class="chips"><span class="chip c-amber">Runs per over</span><span class="chip c-amber">Year trend</span></div>
+  </div>
+</div>
+
+<div class="section-label">Interactive Fun</div>
+<div class="grid">
+  <div class="card">
+    <p class="card-title"><i class="ti ti-users" style="font-size:16px;color:#1D9E75" aria-hidden="true"></i> Dream XI builder <span class="badge badge-hot">Hot</span></p>
+    <p class="card-desc">Pick your all-time IPL XI from any era. Drag players into positions — batting order, bowling attack, captain. Rate your team score.</p>
+    <div class="chips"><span class="chip c-teal">All players</span><span class="chip c-teal">Interactive</span></div>
+  </div>
+  <div class="card">
+    <p class="card-title"><i class="ti ti-currency-rupee" style="font-size:16px;color:#D85A30" aria-hidden="true"></i> Auction simulator</p>
+    <p class="card-desc">Given a ₹100 Cr budget, build your ideal IPL team by "bidding" on players based on their historical stats. Fun strategy game.</p>
+    <div class="chips"><span class="chip c-coral">All players</span><span class="chip c-coral">Game mode</span></div>
+  </div>
+  <div class="card">
+    <p class="card-title"><i class="ti ti-sparkles" style="font-size:16px;color:#7F77DD" aria-hidden="true"></i> "Who am I?" guesser <span class="badge badge-new">New</span></p>
+    <p class="card-desc">Shows 3 mystery stats. User guesses the player. Points for fewer hints used. Powered by real data so answers are always accurate.</p>
+    <div class="chips"><span class="chip c-purple">Quiz mode</span><span class="chip c-purple">All stats</span></div>
+  </div>
+  <div class="card">
+    <p class="card-title"><i class="ti ti-medal" style="font-size:16px;color:#BA7517" aria-hidden="true"></i> Season predictor</p>
+    <p class="card-desc">Based on past patterns — which team wins most after winning the toss? Which venue favors batters? Fun "what-if" explorer.</p>
+    <div class="chips"><span class="chip c-amber">Match data</span><span class="chip c-amber">Patterns</span></div>
+  </div>
+</div>
+
+<div class="section-label">AI-powered pages <span class="badge badge-ai">Claude API</span></div>
+<div class="grid">
+  <div class="card">
+    <p class="card-title"><i class="ti ti-robot" style="font-size:16px;color:#7F77DD" aria-hidden="true"></i> AI commentary bot</p>
+    <p class="card-desc">Ask anything: "Compare Kohli and Rohit in IPL", "Best death bowler ever?". Claude answers using your real data as context.</p>
+    <div class="chips"><span class="chip c-purple">Claude API</span><span class="chip c-purple">Chat UI</span></div>
+  </div>
+  <div class="card">
+    <p class="card-title"><i class="ti ti-file-analytics" style="font-size:16px;color:#378ADD" aria-hidden="true"></i> Auto match reports</p>
+    <p class="card-desc">Click any match from the dataset and get an AI-written match report — "Gujarat Titans beat RR in a thriller…" with real stats.</p>
+    <div class="chips"><span class="chip c-blue">Claude API</span><span class="chip c-blue">Match data</span></div>
+  </div>
+  <div class="card">
+    <p class="card-title"><i class="ti ti-star" style="font-size:16px;color:#BA7517" aria-hidden="true"></i> Player bio generator</p>
+    <p class="card-desc">AI writes a short Wikipedia-style IPL bio for any player using their actual stats — milestones, best seasons, fun facts.</p>
+    <div class="chips"><span class="chip c-amber">Claude API</span><span class="chip c-amber">All players</span></div>
+  </div>
+</div>
+
+<div class="section-label">Visual & Design pages</div>
+<div class="grid">
+  <div class="card">
+    <p class="card-title"><i class="ti ti-map" style="font-size:16px;color:#378ADD" aria-hidden="true"></i> Venue map</p>
+    <p class="card-desc">India map with all IPL venues pinned. Click a venue to see matches played there, highest scores, and top performers at that ground.</p>
+    <div class="chips"><span class="chip c-blue">Match venues</span><span class="chip c-blue">Interactive map</span></div>
+  </div>
+  <div class="card">
+    <p class="card-title"><i class="ti ti-podium" style="font-size:16px;color:#1D9E75" aria-hidden="true"></i> Live leaderboard</p>
+    <p class="card-desc">Animated ranking bars — watch the top 10 run-scorers race across the screen as you slide through 2008 → 2022. Bar chart race.</p>
+    <div class="chips"><span class="chip c-teal">Most Runs</span><span class="chip c-teal">Animation</span></div>
+  </div>
+  <div class="card">
+    <p class="card-title"><i class="ti ti-share" style="font-size:16px;color:#D4537E" aria-hidden="true"></i> Shareable stat cards</p>
+    <p class="card-desc">Generate a beautifully designed stat card for any player or record. Download as PNG and share on social media.</p>
+    <div class="chips"><span class="chip c-pink">Canvas export</span><span class="chip c-pink">Shareable</span></div>
+  </div>
+  <div class="card">
+    <p class="card-title"><i class="ti ti-table" style="font-size:16px;color:#888780" aria-hidden="true"></i> Points table history</p>
+    <p class="card-desc">Standings table for every IPL season. See where each team finished, net run rate, and how close the race was each year.</p>
+    <div class="chips"><span class="chip c-teal">Match data</span><span class="chip c-teal">Per season</span></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<button class="build-btn" onclick="sendPrompt('Build the complete IPL website with all 8 original pages PLUS all extra features: performance heatmap, form tracker, player skill radar, run rate evolution, dream XI builder, auction simulator, who am I guesser, season predictor, AI commentary bot using Claude API, auto match reports, player bio generator, venue map, animated bar chart race leaderboard, shareable stat cards, and points table history — all in one big website using my IPL dataset')">Build the complete IPL mega-website with all features ↗</button>
+
+</div>

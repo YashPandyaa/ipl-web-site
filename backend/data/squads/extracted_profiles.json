@@ -1,0 +1,1298 @@
+{
+  "Sachin Tendulkar": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Legbreak"
+  },
+  "Sanath Jayasuriya": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Slow left-arm orthodox"
+  },
+  "Shaun Pollock": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm fast-medium"
+  },
+  "Harbhajan Singh": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Robin Uthappa": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium"
+  },
+  "Ambati Rayudu": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Saurabh Tiwary": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "None"
+  },
+  "Abhishek Nayar": {
+    "role": "All-Rounder",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Right-arm medium"
+  },
+  "Lasith Malinga": {
+    "role": "Bowler",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm fast"
+  },
+  "Dwayne Bravo": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm fast-medium"
+  },
+  "JP Duminy": {
+    "role": "Batsman",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Shikhar Dhawan": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Kieron Pollard": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium"
+  },
+  "Zaheer Khan": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Left-arm fast-medium"
+  },
+  "Rohit Sharma": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Dinesh Karthik": {
+    "role": "Wicketkeeper",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "None"
+  },
+  "Mitchell Johnson": {
+    "role": "Bowler",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Left-arm fast"
+  },
+  "Lendl Simmons": {
+    "role": "Batsman",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium"
+  },
+  "Corey Anderson": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Left-arm medium-fast"
+  },
+  "Jasprit Bumrah": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm fast"
+  },
+  "Parthiv Patel": {
+    "role": "Wicketkeeper",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "None"
+  },
+  "Pragyan Ojha": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Slow left-arm orthodox"
+  },
+  "Hardik Pandya": {
+    "role": "All-Rounder",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium-fast"
+  },
+  "Krunal Pandya": {
+    "role": "All-Rounder",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Slow left-arm orthodox"
+  },
+  "Suryakumar Yadav": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium"
+  },
+  "Ishan Kishan": {
+    "role": "Wicketkeeper",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "None"
+  },
+  "Quinton de Kock": {
+    "role": "Wicketkeeper",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "None"
+  },
+  "Trent Boult": {
+    "role": "Bowler",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Left-arm fast-medium"
+  },
+  "Rahul Chahar": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Legbreak"
+  },
+  "Mitchell McClenaghan": {
+    "role": "Bowler",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Left-arm fast-medium"
+  },
+  "Tilak Varma": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Tim David": {
+    "role": "Batsman",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Piyush Chawla": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Legbreak"
+  },
+  "G Coetzee": {
+    "role": "Bowler",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm fast"
+  },
+  "Romario Shepherd": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm fast-medium"
+  },
+  "Mohammad Nabi": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Naman Dhir": {
+    "role": "All-Rounder",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "N Thushara": {
+    "role": "Bowler",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm fast-medium"
+  },
+  "Akash Madhwal": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium-fast"
+  },
+  "MS Dhoni": {
+    "role": "Wicketkeeper",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium"
+  },
+  "Suresh Raina": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Matthew Hayden": {
+    "role": "Batsman",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Right-arm medium"
+  },
+  "Michael Hussey": {
+    "role": "Batsman",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Right-arm medium"
+  },
+  "Murali Vijay": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Albie Morkel": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Right-arm medium-fast"
+  },
+  "Subramaniam Badrinath": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Lakshmipathy Balaji": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium-fast"
+  },
+  "Muttiah Muralitharan": {
+    "role": "Bowler",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Ravichandran Ashwin": {
+    "role": "All-Rounder",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Ravindra Jadeja": {
+    "role": "All-Rounder",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Slow left-arm orthodox"
+  },
+  "Faf du Plessis": {
+    "role": "Batsman",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Legbreak"
+  },
+  "Mohit Sharma": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium-fast"
+  },
+  "Brendon McCullum": {
+    "role": "Batsman",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium"
+  },
+  "Shane Watson": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm fast-medium"
+  },
+  "Deepak Chahar": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium-fast"
+  },
+  "Shardul Thakur": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium-fast"
+  },
+  "Imran Tahir": {
+    "role": "Bowler",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Legbreak"
+  },
+  "Ruturaj Gaikwad": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Shivam Dube": {
+    "role": "All-Rounder",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Right-arm medium"
+  },
+  "Matheesha Pathirana": {
+    "role": "Bowler",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm fast"
+  },
+  "Ajinkya Rahane": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium"
+  },
+  "R Ravindra": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Slow left-arm orthodox"
+  },
+  "Daryl Mitchell": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium"
+  },
+  "Devon Conway": {
+    "role": "Wicketkeeper",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Right-arm medium"
+  },
+  "Mustafizur Rahman": {
+    "role": "Bowler",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Left-arm fast-medium"
+  },
+  "Tushar Deshpande": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium-fast"
+  },
+  "Moeen Ali": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Rahul Dravid": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Anil Kumble": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Legbreak"
+  },
+  "Jacques Kallis": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm fast-medium"
+  },
+  "Mark Boucher": {
+    "role": "Wicketkeeper",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "None"
+  },
+  "Virat Kohli": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium"
+  },
+  "Ross Taylor": {
+    "role": "Batsman",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Dale Steyn": {
+    "role": "Bowler",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm fast"
+  },
+  "Vinay Kumar": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium-fast"
+  },
+  "AB de Villiers": {
+    "role": "Batsman",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium"
+  },
+  "Chris Gayle": {
+    "role": "Batsman",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Daniel Vettori": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Slow left-arm orthodox"
+  },
+  "Yuzvendra Chahal": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Legbreak"
+  },
+  "Mitchell Starc": {
+    "role": "Bowler",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Left-arm fast"
+  },
+  "Tillakaratne Dilshan": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Harshal Patel": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium-fast"
+  },
+  "Mohammed Siraj": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm fast-medium"
+  },
+  "Devdutt Padikkal": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Glenn Maxwell": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "KL Rahul": {
+    "role": "Wicketkeeper",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "None"
+  },
+  "Marcus Stoinis": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium-fast"
+  },
+  "Rajat Patidar": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "C Green": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm fast-medium"
+  },
+  "WG Jacks": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Yash Dayal": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Left-arm fast-medium"
+  },
+  "RJW Topley": {
+    "role": "Bowler",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Left-arm fast-medium"
+  },
+  "Mahipal Lomror": {
+    "role": "All-Rounder",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Slow left-arm orthodox"
+  },
+  "Anuj Rawat": {
+    "role": "Wicketkeeper",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "None"
+  },
+  "Karn Sharma": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Legbreak"
+  },
+  "Vijaykumar Vyshak": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium"
+  },
+  "Sourav Ganguly": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Right-arm medium"
+  },
+  "Shoaib Akhtar": {
+    "role": "Bowler",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm fast"
+  },
+  "Ricky Ponting": {
+    "role": "Batsman",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium"
+  },
+  "David Hussey": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Brad Hodge": {
+    "role": "Batsman",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Ishant Sharma": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm fast-medium"
+  },
+  "Murali Kartik": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Slow left-arm orthodox"
+  },
+  "Wriddhiman Saha": {
+    "role": "Wicketkeeper",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "None"
+  },
+  "Gautam Gambhir": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Legbreak"
+  },
+  "Sunil Narine": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Yusuf Pathan": {
+    "role": "All-Rounder",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Manish Pandey": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium"
+  },
+  "Shakib Al Hasan": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Slow left-arm orthodox"
+  },
+  "Andre Russell": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm fast"
+  },
+  "Umesh Yadav": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm fast"
+  },
+  "Shubman Gill": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Nitish Rana": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Varun Chakaravarthy": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm legbreak"
+  },
+  "Eoin Morgan": {
+    "role": "Batsman",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Right-arm medium"
+  },
+  "Kuldeep Yadav": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Left-arm wrist spin"
+  },
+  "Lockie Ferguson": {
+    "role": "Bowler",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm fast"
+  },
+  "Shivam Mavi": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm fast-medium"
+  },
+  "Shreyas Iyer": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm legbreak"
+  },
+  "Rinku Singh": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Venkatesh Iyer": {
+    "role": "All-Rounder",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Right-arm medium"
+  },
+  "PD Salt": {
+    "role": "Wicketkeeper",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "None"
+  },
+  "Harshit Rana": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm fast-medium"
+  },
+  "Ramandeep Singh": {
+    "role": "All-Rounder",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium"
+  },
+  "Vaibhav Arora": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm fast-medium"
+  },
+  "A Raghuvanshi": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Slow left-arm orthodox"
+  },
+  "Virender Sehwag": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Glenn McGrath": {
+    "role": "Bowler",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm fast-medium"
+  },
+  "Amit Mishra": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Legbreak"
+  },
+  "Kevin Pietersen": {
+    "role": "Batsman",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "DPMD Jayawardene": {
+    "role": "Batsman",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium"
+  },
+  "David Warner": {
+    "role": "Batsman",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Legbreak"
+  },
+  "Shahbaz Nadeem": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Slow left-arm orthodox"
+  },
+  "Rishabh Pant": {
+    "role": "Wicketkeeper",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "None"
+  },
+  "Prithvi Shaw": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Kagiso Rabada": {
+    "role": "Bowler",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm fast"
+  },
+  "Axar Patel": {
+    "role": "All-Rounder",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Slow left-arm orthodox"
+  },
+  "Mitchell Marsh": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm fast-medium"
+  },
+  "Tristan Stubbs": {
+    "role": "Batsman",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "J Fraser-McGurk": {
+    "role": "Batsman",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Legbreak"
+  },
+  "Khaleel Ahmed": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Left-arm fast-medium"
+  },
+  "Mukesh Kumar": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm fast-medium"
+  },
+  "Shane Warne": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Legbreak"
+  },
+  "Graeme Smith": {
+    "role": "Batsman",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Munaf Patel": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium-fast"
+  },
+  "Naman Ojha": {
+    "role": "Wicketkeeper",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "None"
+  },
+  "Sohail Tanvir": {
+    "role": "Bowler",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Left-arm medium-fast"
+  },
+  "Sanju Samson": {
+    "role": "Wicketkeeper",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "None"
+  },
+  "James Faulkner": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Left-arm medium-fast"
+  },
+  "Karun Nair": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Stuart Binny": {
+    "role": "All-Rounder",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium"
+  },
+  "Pravin Tambe": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Legbreak"
+  },
+  "Dhawal Kulkarni": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium-fast"
+  },
+  "Steve Smith": {
+    "role": "Batsman",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Legbreak"
+  },
+  "Jos Buttler": {
+    "role": "Wicketkeeper",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "None"
+  },
+  "Ben Stokes": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Right-arm fast-medium"
+  },
+  "Jofra Archer": {
+    "role": "Bowler",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm fast"
+  },
+  "Shreyas Gopal": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Legbreak"
+  },
+  "Rahul Tewatia": {
+    "role": "All-Rounder",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Legbreak"
+  },
+  "Riyan Parag": {
+    "role": "All-Rounder",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Legbreak"
+  },
+  "Yashasvi Jaiswal": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Legbreak"
+  },
+  "Shimron Hetmyer": {
+    "role": "Batsman",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "None"
+  },
+  "Dhruv Jurel": {
+    "role": "Wicketkeeper",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "None"
+  },
+  "Sandeep Sharma": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium"
+  },
+  "Avesh Khan": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm fast-medium"
+  },
+  "Adam Gilchrist": {
+    "role": "Wicketkeeper",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "None"
+  },
+  "Andrew Symonds": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Herschelle Gibbs": {
+    "role": "Batsman",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "None"
+  },
+  "RP Singh": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Left-arm fast-medium"
+  },
+  "Venugopal Rao": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Chaminda Vaas": {
+    "role": "Bowler",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Left-arm fast-medium"
+  },
+  "Bhuvneshwar Kumar": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium-fast"
+  },
+  "Cameron White": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Legbreak"
+  },
+  "Thisara Perera": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Right-arm medium-fast"
+  },
+  "Kane Williamson": {
+    "role": "Batsman",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Rashid Khan": {
+    "role": "Bowler",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Legbreak"
+  },
+  "Jonny Bairstow": {
+    "role": "Wicketkeeper",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "None"
+  },
+  "Yuvraj Singh": {
+    "role": "All-Rounder",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Slow left-arm orthodox"
+  },
+  "Moises Henriques": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium-fast"
+  },
+  "Pat Cummins": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm fast"
+  },
+  "Abhishek Sharma": {
+    "role": "All-Rounder",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Slow left-arm orthodox"
+  },
+  "Travis Head": {
+    "role": "Batsman",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Heinrich Klaasen": {
+    "role": "Wicketkeeper",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "None"
+  },
+  "Aiden Markram": {
+    "role": "Batsman",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "T Natarajan": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Left-arm fast-medium"
+  },
+  "Nithish Kumar Reddy": {
+    "role": "All-Rounder",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium-fast"
+  },
+  "Abdul Samad": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm legbreak"
+  },
+  "Mayank Agarwal": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "None"
+  },
+  "Shahbaz Ahmed": {
+    "role": "All-Rounder",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Slow left-arm orthodox"
+  },
+  "Shaun Marsh": {
+    "role": "Batsman",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Kumar Sangakkara": {
+    "role": "Wicketkeeper",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "None"
+  },
+  "Irfan Pathan": {
+    "role": "All-Rounder",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Left-arm medium-fast"
+  },
+  "S Sreesanth": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm fast-medium"
+  },
+  "George Bailey": {
+    "role": "Batsman",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium"
+  },
+  "David Miller": {
+    "role": "Batsman",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "None"
+  },
+  "Nicholas Pooran": {
+    "role": "Wicketkeeper",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "None"
+  },
+  "Mohammed Shami": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm fast"
+  },
+  "Arshdeep Singh": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Left-arm fast-medium"
+  },
+  "Ravi Bishnoi": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Legbreak"
+  },
+  "Deepak Hooda": {
+    "role": "All-Rounder",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Sam Curran": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Left-arm fast-medium"
+  },
+  "Liam Livingstone": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm legbreak"
+  },
+  "Jitesh Sharma": {
+    "role": "Wicketkeeper",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "None"
+  },
+  "Shashank Singh": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Ashutosh Sharma": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "None"
+  },
+  "Harpreet Brar": {
+    "role": "All-Rounder",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Slow left-arm orthodox"
+  },
+  "Sai Sudharsan": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Legbreak"
+  },
+  "Noor Ahmad": {
+    "role": "Bowler",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Left-arm wrist spin"
+  },
+  "Sai Kishore": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Slow left-arm orthodox"
+  },
+  "Matthew Wade": {
+    "role": "Wicketkeeper",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "None"
+  },
+  "Vijay Shankar": {
+    "role": "All-Rounder",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium"
+  },
+  "Ayush Badoni": {
+    "role": "Batsman",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm offbreak"
+  },
+  "Naveen-ul-Haq": {
+    "role": "Bowler",
+    "is_overseas": true,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium-fast"
+  },
+  "Mohsin Khan": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Left-arm fast-medium"
+  },
+  "Yash Thakur": {
+    "role": "Bowler",
+    "is_overseas": false,
+    "batting_style": "Right-hand bat",
+    "bowling_style": "Right-arm medium-fast"
+  },
+  "KR Mayers": {
+    "role": "All-Rounder",
+    "is_overseas": true,
+    "batting_style": "Left-hand bat",
+    "bowling_style": "Right-arm medium-fast"
+  }
+}

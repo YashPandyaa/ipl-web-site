@@ -1,0 +1,165 @@
+
+<style>
+* { box-sizing: border-box; }
+.page { padding: 1rem 0 2rem; }
+.nav { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 2rem; border-bottom: 0.5px solid var(--color-border-tertiary); padding-bottom: 1rem; }
+.nav-item { font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px; border: 0.5px solid var(--color-border-secondary); color: var(--color-text-secondary); cursor: pointer; }
+.nav-item.active { background: #185FA5; border-color: #185FA5; color: #E6F1FB; }
+.section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.07em; color: var(--color-text-tertiary); text-transform: uppercase; margin: 2rem 0 0.75rem; }
+.pages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.page-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.15rem; }
+.page-card.hero { border: 2px solid #185FA5; }
+.page-num { font-size: 11px; color: var(--color-text-tertiary); margin: 0 0 6px; }
+.page-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin: 0 0 5px; display: flex; align-items: center; gap: 6px; }
+.page-desc { font-size: 12px; color: var(--color-text-secondary); margin: 0 0 10px; line-height: 1.5; }
+.chips { display: flex; flex-wrap: wrap; gap: 4px; }
+.chip { font-size: 10px; padding: 2px 7px; border-radius: 20px; }
+.chip-blue { background: #E6F1FB; color: #0C447C; }
+.chip-amber { background: #FAEEDA; color: #633806; }
+.chip-teal { background: #E1F5EE; color: #085041; }
+.chip-purple { background: #EEEDFE; color: #3C3489; }
+.chip-coral { background: #FAECE7; color: #712B13; }
+.chip-green { background: #EAF3DE; color: #27500A; }
+.divider { height: 0.5px; background: var(--color-border-tertiary); margin: 2rem 0 1rem; }
+.tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+.tech-card { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 0.75rem 1rem; }
+.tech-label { font-size: 11px; color: var(--color-text-tertiary); margin: 0 0 4px; }
+.tech-val { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin: 0; }
+.build-btn { margin-top: 2rem; display: block; width: 100%; padding: 12px; background: #185FA5; color: #E6F1FB; border: none; border-radius: var(--border-radius-lg); font-size: 14px; font-weight: 500; cursor: pointer; }
+.build-btn:hover { background: #0C447C; }
+.badge-new { font-size: 10px; background: #FAEEDA; color: #633806; padding: 2px 7px; border-radius: 20px; font-weight: 500; }
+</style>
+
+<h2 class="sr-only">Complete IPL website plan combining all features into one site</h2>
+
+<div class="page">
+
+<div class="nav">
+  <span class="nav-item active">Home</span>
+  <span class="nav-item">Stats</span>
+  <span class="nav-item">Players</span>
+  <span class="nav-item">Teams</span>
+  <span class="nav-item">Seasons</span>
+  <span class="nav-item">Records</span>
+  <span class="nav-item">Compare</span>
+  <span class="nav-item">Quiz</span>
+</div>
+
+<div class="section-label">8 pages — what each page includes</div>
+<div class="pages-grid">
+
+  <div class="page-card hero">
+    <p class="page-num">Page 1 · Home</p>
+    <p class="page-title"><i class="ti ti-home" style="font-size:15px;color:#378ADD" aria-hidden="true"></i> Home / Hero</p>
+    <p class="page-desc">Hero banner, IPL highlights, quick stat counters (total matches, runs, seasons), and quick-nav cards to all sections.</p>
+    <div class="chips">
+      <span class="chip chip-blue">ipl-matches.csv</span>
+      <span class="chip chip-amber">Live counters</span>
+    </div>
+  </div>
+
+  <div class="page-card">
+    <p class="page-num">Page 2 · Stats dashboard</p>
+    <p class="page-title"><i class="ti ti-chart-bar" style="font-size:15px;color:#378ADD" aria-hidden="true"></i> Stats dashboard</p>
+    <p class="page-desc">Filter by year + stat type. Charts for runs, wickets, economy, sixes, fours, dot balls. Season-on-season trend lines.</p>
+    <div class="chips">
+      <span class="chip chip-blue">All datasets</span>
+      <span class="chip chip-teal">Bar + line charts</span>
+    </div>
+  </div>
+
+  <div class="page-card">
+    <p class="page-num">Page 3 · Players</p>
+    <p class="page-title"><i class="ti ti-user" style="font-size:15px;color:#1D9E75" aria-hidden="true"></i> Player profiles</p>
+    <p class="page-desc">Search any player. Career timeline, batting + bowling stats per season, records they hold, best performances.</p>
+    <div class="chips">
+      <span class="chip chip-teal">Most Runs</span>
+      <span class="chip chip-teal">Most Wickets</span>
+      <span class="chip chip-green">All seasons</span>
+    </div>
+  </div>
+
+  <div class="page-card">
+    <p class="page-num">Page 4 · Teams</p>
+    <p class="page-title"><i class="ti ti-shirt" style="font-size:15px;color:#7F77DD" aria-hidden="true"></i> Team hub</p>
+    <p class="page-desc">All franchises — win/loss record, toss stats, best players per team, season-wise performance, head-to-head record.</p>
+    <div class="chips">
+      <span class="chip chip-purple">Matches data</span>
+      <span class="chip chip-purple">Win/loss</span>
+    </div>
+  </div>
+
+  <div class="page-card">
+    <p class="page-num">Page 5 · Seasons</p>
+    <p class="page-title"><i class="ti ti-calendar" style="font-size:15px;color:#BA7517" aria-hidden="true"></i> Season timeline</p>
+    <p class="page-desc">Click any year 2008–2022. Champion, runner-up, top scorer, top wicket-taker, orange cap, purple cap, final result.</p>
+    <div class="chips">
+      <span class="chip chip-amber">Per year</span>
+      <span class="chip chip-amber">ipl-matches.csv</span>
+    </div>
+  </div>
+
+  <div class="page-card">
+    <p class="page-num">Page 6 · Records</p>
+    <p class="page-title"><i class="ti ti-trophy" style="font-size:15px;color:#BA7517" aria-hidden="true"></i> Hall of records</p>
+    <p class="page-desc">All-time leaderboards — most runs, most wickets, fastest 50s & 100s, most sixes, best economy. Sortable, filterable.</p>
+    <div class="chips">
+      <span class="chip chip-amber">All Seasons Combined</span>
+      <span class="chip chip-coral">Fastest records</span>
+    </div>
+  </div>
+
+  <div class="page-card">
+    <p class="page-num">Page 7 · Compare</p>
+    <p class="page-title"><i class="ti ti-arrows-exchange" style="font-size:15px;color:#D4537E" aria-hidden="true"></i> Player comparator</p>
+    <p class="page-desc">Pick any 2 players. Side-by-side radar chart + stat table. Compare batting, bowling, consistency, milestones.</p>
+    <div class="chips">
+      <span class="chip chip-coral">Batting + Bowling</span>
+      <span class="chip chip-coral">Radar chart</span>
+    </div>
+  </div>
+
+  <div class="page-card">
+    <p class="page-num">Page 8 · Quiz <span class="badge-new">Fun</span></p>
+    <p class="page-title"><i class="ti ti-brain" style="font-size:15px;color:#7F77DD" aria-hidden="true"></i> IPL trivia quiz</p>
+    <p class="page-desc">10-question quiz generated from real data. "Who scored the fastest century?", "Which team won 2016?" Score + leaderboard.</p>
+    <div class="chips">
+      <span class="chip chip-purple">Fastest records</span>
+      <span class="chip chip-purple">Match data</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="divider"></div>
+<div class="section-label">Recommended tech stack</div>
+<div class="tech-grid">
+  <div class="tech-card">
+    <p class="tech-label">Frontend</p>
+    <p class="tech-val">HTML + CSS + JS</p>
+  </div>
+  <div class="tech-card">
+    <p class="tech-label">Charts</p>
+    <p class="tech-val">Chart.js</p>
+  </div>
+  <div class="tech-card">
+    <p class="tech-label">CSV parsing</p>
+    <p class="tech-val">PapaParse</p>
+  </div>
+  <div class="tech-card">
+    <p class="tech-label">Routing</p>
+    <p class="tech-val">Hash-based SPA</p>
+  </div>
+  <div class="tech-card">
+    <p class="tech-label">Data format</p>
+    <p class="tech-val">Embedded JSON</p>
+  </div>
+  <div class="tech-card">
+    <p class="tech-label">Hosting</p>
+    <p class="tech-val">GitHub Pages / Netlify</p>
+  </div>
+</div>
+
+<button class="build-btn" onclick="sendPrompt('Build the complete combined IPL website with all 8 pages using my dataset — Home, Stats Dashboard, Player Profiles, Teams, Season Timeline, Records, Comparator, and Quiz')">Build the full IPL website now ↗</button>
+
+</div>
