@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: ipl-backend
+    env: python
+    buildCommand: "cd backend && pip install -r requirements.txt && python manage.py migrate && python manage.py collectstatic --noinput"
+    startCommand: "cd backend && gunicorn ipl_project.wsgi:application"
+    envVars:
+      - key: SECRET_KEY
+        value: django-insecure-ipl-stats-2026
+      - key: DEBUG
+        value: false
+      - key: PYTHON_VERSION
+        value: 3.11.0
