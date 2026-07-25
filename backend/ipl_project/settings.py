@@ -59,13 +59,21 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ipl_project.wsgi.application'
 
+import dj_database_url
+
 # Database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+db_url = os.environ.get('DATABASE_URL')
+if db_url:
+    DATABASES = {
+        'default': dj_database_url.config(default=db_url, conn_max_age=600)
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
