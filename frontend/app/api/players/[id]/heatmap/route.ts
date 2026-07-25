@@ -46,7 +46,8 @@ export async function GET(
   const name = mapIdToName(id);
 
   try {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://ipl-backend-aw1x.onrender.com';
+
     const [batRes, bowlRes] = await Promise.all([
       fetch(`${apiUrl}/api/batting/?player=${encodeURIComponent(name)}`, { cache: 'no-store' }),
       fetch(`${apiUrl}/api/bowling/?player=${encodeURIComponent(name)}`, { cache: 'no-store' })

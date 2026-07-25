@@ -16,7 +16,8 @@ export function useLiveUpdates() {
 
   const fetchFallbackData = useCallback(async () => {
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/live/current-match/`);
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://ipl-backend-aw1x.onrender.com'}/api/live/current-match/`);
+
       if (res.ok) {
         const data = await res.json();
         if (data) {

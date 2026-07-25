@@ -1,6 +1,7 @@
 import { Match, BattingRecord, BowlingRecord, SeasonSummary, TeamStats, VenueStats, PlayerSummary, OrangeCapStat, PurpleCapStat, MatchesPerSeasonStat, StadiumStat } from './types';
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'https://ipl-backend-aw1x.onrender.com';
+
 
 interface PaginatedResponse<T> {
   count: number;

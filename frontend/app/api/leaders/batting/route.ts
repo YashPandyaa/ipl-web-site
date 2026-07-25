@@ -60,7 +60,8 @@ export async function GET(request: Request) {
   
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000'}/api/batting/?order_by=${order}&season=0`,
+      `${process.env.NEXT_PUBLIC_API_URL || 'https://ipl-backend-aw1x.onrender.com'}/api/batting/?order_by=${order}&season=0`,
+
       { cache: 'no-store' }
     );
     if (!res.ok) {
